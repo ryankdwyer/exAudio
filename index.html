@@ -7,8 +7,14 @@
     <script src="app/shared/header/header.controller.js"></script>
     <script src="app/shared/footer/footer.directive.js"></script>
     <script src="app/shared/footer/footer.controller.js"></script>
+    <script src="app/shared/library/library.controller.js"></script>
+    <script src="app/shared/library/library.directive.js"></script>
+    <script src="app/shared/library/library.service.js"></script>
     <script src="app/components/uploader/uploader.directive.js"></script>
     <script src="app/components/uploader/uploader.controller.js"></script>
+    <script src="app/components/player/player.controller.js"></script>
+    <script src="app/components/player/player.service.js"></script>
+    <script src="app/components/player/player.js"></script>
     <script src="node_modules/av/aurora.js"></script>
     <script src="node_modules/flac.js/build/flac.js"></script>
     <script src="node_modules/mp3.js/build/mp3.js"></script>
@@ -18,16 +24,12 @@
   <body ng-app="exaudio">
     <header></header>
     <uploader></uploader>
+    <library></library>
+    <player></player>
     <footer></footer>
   <script>
-    var mm = require('musicmetadata'),
-            fs = require('fs'),
-            path = '/Users/ryan/Documents/Downloads/Music/Miles Davis - Birth of the Cool/01 - Move.flac',
-            path2 = '/Users/ryan/Documents/Downloads/Music/Tame Impala  Currents [2015] 320/320/01. Let It Happen.mp3';
-    var songBuffer = fs.readFileSync(path2)
-    var songbuffer2 = fs.readFileSync(path);
-    var player = AV.Player.fromBuffer(songBuffer);
-    player.play();
+    var mm = require('musicmetadata');
+    var fs = require('fs');
   </script>
   </body>
 </html>

@@ -1,6 +1,10 @@
-app.controller('UploaderCtrl', function ($scope) {
-    $scope.files = [];
+app.controller('UploaderCtrl', function ($scope, LibraryService, PlayerService ) {
     var songInput = $id('song-input');
+
+    $scope.playSong = function (songPath) {
+        // need to check if something is already playing
+        PlayerService.playSong(songPath);
+    };
 
     function $id(id) {
         return document.getElementById(id);
@@ -18,7 +22,8 @@ app.controller('UploaderCtrl', function ($scope) {
     function ParseFile(file) {
         mm(fs.createReadStream(file.path), function (err, metadata) {
             if (err) throw err;
-            $scope.files.push(metadata);
+            metadata.path = file.path;
+            LibraryService.songs.push(metadata);
             $scope.$digest();
         });
     }
