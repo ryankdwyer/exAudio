@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/shared/header/header.directive.js"></script>
+    <script src="app/shared/header/header.controller.js"></script>
+    <script src="app/shared/footer/footer.directive.js"></script>
+    <script src="app/shared/footer/footer.controller.js"></script>
+    <script src="app/components/uploader/uploader.directive.js"></script>
+    <script src="app/components/uploader/uploader.controller.js"></script>
+    <script src="node_modules/av/aurora.js"></script>
+    <script src="node_modules/flac.js/build/flac.js"></script>
+    <script src="node_modules/mp3.js/build/mp3.js"></script>
+
+      <title>ExAudio</title>
+  </head>
+  <body ng-app="exaudio">
+    <header></header>
+    <uploader></uploader>
+    <footer></footer>
+  <script>
+    var mm = require('musicmetadata'),
+            fs = require('fs'),
+            path = '/Users/ryan/Documents/Downloads/Music/Miles Davis - Birth of the Cool/01 - Move.flac',
+            path2 = '/Users/ryan/Documents/Downloads/Music/Tame Impala  Currents [2015] 320/320/01. Let It Happen.mp3';
+    var songBuffer = fs.readFileSync(path2)
+    var songbuffer2 = fs.readFileSync(path);
+    var player = AV.Player.fromBuffer(songBuffer);
+    player.play();
+  </script>
+  </body>
+</html>
