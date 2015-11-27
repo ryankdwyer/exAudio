@@ -2,6 +2,8 @@
 <html>
   <head>
     <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/lokijs/src/loki-angular.js"></script>
+    <script src="node_modules/lokijs/src/lokijs.js"></script>
     <script src="app/app.js"></script>
     <script src="app/shared/header/header.directive.js"></script>
     <script src="app/shared/header/header.controller.js"></script>
@@ -18,7 +20,7 @@
     <script src="node_modules/av/aurora.js"></script>
     <script src="node_modules/flac.js/build/flac.js"></script>
     <script src="node_modules/mp3.js/build/mp3.js"></script>
-
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
       <title>ExAudio</title>
   </head>
   <body ng-app="exaudio">
@@ -31,5 +33,8 @@
     var mm = require('musicmetadata');
     var fs = require('fs');
   </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
   </body>
 </html>

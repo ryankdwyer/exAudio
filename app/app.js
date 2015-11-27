@@ -1,1 +1,1 @@
-var app = angular.module('exaudio', []);
+var app = angular.module('exaudio', ['lokijs']);
