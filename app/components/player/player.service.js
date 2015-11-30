@@ -1,4 +1,4 @@
-app.factory('PlayerService', function (LibraryService) {
+app.factory('PlayerService', function (LibraryService, $rootScope) {
     return {
         player: 'test',
         playing: false,
@@ -19,6 +19,7 @@ app.factory('PlayerService', function (LibraryService) {
                         self.playSong(nextSong.path, nextSongIdx);
                     }
                 });
+                $rootScope.$broadcast('songStarted', self.player);
                 self.player.play();
                 self.playing = true;
             })

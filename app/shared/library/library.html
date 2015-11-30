@@ -1,2 +1,17 @@
 <h1>Library</h1>
-<li ng-repeat="song in songs" ng-dblclick="playSong(song.path, $index)">{{song.artist[0]}} - {{song.title}} - {{song.album}} - {{song.duration / 60 | number:2}} - {{song.track.no}} of {{song.track.of}}</li>
+<div class="container" style="margin: 0px;">
+	<div class="row">
+		<div class="col-xs-2">Artist</div>
+		<div class="col-xs-4">Title</div>
+		<div class="col-xs-3">Album</div>
+		<div class="col-xs-2">Duration</div>
+		<div class="col-xs-1">Track</div>
+	</div>
+	<div class="row" ng-repeat="song in songs" ng-dblclick="playSong(song.path, $index)">
+		<div class="col-xs-2">{{song.artist[0]}}</div>
+		<div class="col-xs-4">{{song.title}}</div>
+		<div class="col-xs-3">{{song.album}}</div>
+		<div class="col-xs-2">{{song.duration / 60 | number:2}}</div>
+		<div class="col-xs-1">{{song.track.no}}</div>
+	</div>
+</div>
