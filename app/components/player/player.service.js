@@ -1,17 +1,26 @@
-app.factory('PlayerService', function () {
+app.factory('PlayerService', function (LibraryService) {
     return {
         player: 'test',
         playing: false,
-        playSong: function (songPath) {
+        playSong: function (songPath, idx) {
             var self = this;
             if (self.player !== 'test') {
                 self.player.stop();
             }
             fs.readFile(songPath, function(err, songBuffer) {
                 self.player = AV.Player.fromBuffer(songBuffer);
+                self.player.idx = idx;
+                self.player.on('end', function () {
+                    var nextSongIdx = self.player.idx + 1;
+                    if (nextSongIdx >= LibraryService.songs.length) return false;
+                    else {
+                        var nextSong = LibraryService.songs[nextSongIdx];
+                        console.log(nextSong, nextSongIdx);
+                        self.playSong(nextSong.path, nextSongIdx);
+                    }
+                });
                 self.player.play();
                 self.playing = true;
-                console.log(self.getPlayerStatus(self.player));
             })
         },
         getPlayerStatus: function (player) {
@@ -20,19 +29,20 @@ app.factory('PlayerService', function () {
         play: function (player) {
             if(player !== 'test') {
                 player.play();
-                console.log(this.getPlayerStatus(player));
             }
         },
         pause: function (player) {
             if(player !== 'test') {
                 player.pause();
-                console.log(this.getPlayerStatus(player));
             }
         },
         stop: function (player) {
             if(player !== 'test') {
                 player.stop();
             }
+        },
+        autoPlay: function () {
+
         }
     }
 });

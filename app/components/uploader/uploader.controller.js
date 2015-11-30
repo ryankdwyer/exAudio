@@ -1,16 +1,15 @@
 app.controller('UploaderCtrl', function ($scope, LibraryService, PlayerService ) {
     var songInput = $id('song-input');
 
-    $scope.playSong = function (songPath) {
-        // need to check if something is already playing
-        PlayerService.playSong(songPath);
+    songInput.addEventListener("change", FileSelectHandler, false);
+
+    $scope.playSong = function (songPath, idx) {
+        PlayerService.playSong(songPath, idx);
     };
 
     function $id(id) {
         return document.getElementById(id);
     }
-
-    songInput.addEventListener("change", FileSelectHandler, false);
 
     function FileSelectHandler (e) {
         var files = e.target.files || e.dataTransfer.files;
