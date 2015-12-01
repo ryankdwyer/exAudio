@@ -1,7 +1,14 @@
 app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope) {
     $scope.Player = PlayerService;
+    $scope.currentSong = 'test';
+    $scope.duration = null;
 
     $rootScope.$on('songStarted', function (event, playerObj) {
-    	console.log(playerObj);
+    	var song = playerObj.asset.metadata.artist + ' - ' + playerObj.asset.metadata.title;
+    	$scope.currentSong = song;
+    });
+
+    $rootScope.$on('durationChange', function (event, elapsed) {
+    	$scope.$apply($scope.duration = elapsed);
     });
 });

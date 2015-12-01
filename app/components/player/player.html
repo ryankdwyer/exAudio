@@ -1,4 +1,7 @@
-<button ng-click="">Previous</button>
-<button ng-click="Player.play(Player.player)">Play</button>
-<button ng-click="Player.pause(Player.player)">Pause</button>
-<button ng-click="">Next</button>
+<button class="mdl-button mdl-js-button mdl-button--raised" ng-click="Player.previous(Player.player)">Previous</button>
+<button class="mdl-button mdl-js-button mdl-button--raised" ng-click="Player.play(Player.player)">Play</button>
+<button class="mdl-button mdl-js-button mdl-button--raised" ng-click="Player.pause(Player.player)">Pause</button>
+<button class="mdl-button mdl-js-button mdl-button--raised" ng-click="Player.next(Player.player)">Next</button>
+
+<div>Song: {{currentSong}}</div>
+<div>Elapsed: {{duration}}</div>
