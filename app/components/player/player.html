@@ -4,4 +4,4 @@
 <button class="mdl-button mdl-js-button mdl-button--raised" ng-click="Player.next(Player.player)">Next</button>
 
 <div>Song: {{currentSong}}</div>
-<div>Elapsed: {{duration}}</div>
+<div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}} - {{totalTime | date: 'mm:ss'}}</div>

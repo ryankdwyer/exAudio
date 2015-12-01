@@ -1,18 +1,22 @@
 <h1>Library</h1>
 <hr>
-<div class="container" style="margin: 0px;">
-	<div class="row">
-		<div class="col-xs-2">Artist</div>
-		<div class="col-xs-4">Title</div>
-		<div class="col-xs-3">Album</div>
-		<div class="col-xs-2">Duration</div>
-		<div class="col-xs-1">Track</div>
-	</div>
-	<div class="row" ng-repeat="song in songs track by $index" ng-dblclick="playSong(song.path, $index)">
-		<div class="col-xs-2">{{song.artist[0]}}</div>
-		<div class="col-xs-4">{{song.title}}</div>
-		<div class="col-xs-3">{{song.album}}</div>
-		<div class="col-xs-2">{{song.duration / 60 | number:2}}</div>
-		<div class="col-xs-1">{{song.track.no}}</div>
+<div id="library">
+	<div class="container" id="library-header" style="margin: 0px;">
+		<div class="row">
+			<div class="col-xs-2">Artist</div>
+			<div class="col-xs-4">Title</div>
+			<div class="col-xs-3">Album</div>
+			<div class="col-xs-2 text-center">Duration</div>
+			<div class="col-xs-1 text-center">Track</div>
+		</div>
+		<div id="library-body">
+			<div class="row library-row" ng-repeat="song in songs track by $index" ng-dblclick="playSong(song.path, $index)">
+				<div class="col-xs-2">{{song.artist[0]}}</div>
+				<div class="col-xs-4">{{song.title}}</div>
+				<div class="col-xs-3">{{song.album}}</div>
+				<div class="col-xs-2 text-center">{{song.duration * 1000| date: 'mm:ss'}}</div>
+				<div class="col-xs-1 text-center">{{song.track.no}}</div>
+			</div>
+		</div>
 	</div>
 </div>

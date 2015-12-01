@@ -23,9 +23,9 @@ app.factory('PlayerService', function (Storage, $rootScope) {
                 });
                 self.player.on('ready', function () {
                     $rootScope.$emit('songStarted', self.player);
-                    self.player.play();
                     self.playing = true;
                 });
+                self.player.play();
             });
         },
         getPlayerStatus: function (player) {

@@ -1,7 +1,7 @@
 app.controller('UploaderCtrl', function ($scope, PlayerService, Storage, $rootScope ) {
     var songInput = $id('song-input');
 
-    songInput.addEventListener("change", FileSelectHandler, false);
+    songInput.addEventListener("change", fileSelectHandler, false);
 
     $scope.playSong = function (songPath, idx) {
         PlayerService.playSong(songPath, idx);
@@ -11,11 +11,11 @@ app.controller('UploaderCtrl', function ($scope, PlayerService, Storage, $rootSc
         return document.getElementById(id);
     }
 
-    function FileSelectHandler (e) {
+    function fileSelectHandler (e) {
         var files = e.target.files || e.dataTransfer.files;
         var songsToAdd = [];
         for (var i = 0; i < files.length;i++) {
-            songsToAdd.push(ParseFile(files[i]));
+            songsToAdd.push(parseFile(files[i]));
         }
         return Promise.all(songsToAdd)
         .then(function(songs) {
@@ -23,7 +23,7 @@ app.controller('UploaderCtrl', function ($scope, PlayerService, Storage, $rootSc
         })
     }
 
-    function ParseFile(file) {
+    function parseFile(file) {
         mm(fs.createReadStream(file.path), function (err, metadata) {
             if (err) throw err;
             metadata.path = file.path;
