@@ -1,7 +1,23 @@
-<button class="mdl-button mdl-js-button mdl-button--raised" ng-click="Player.previous(Player.player)">Previous</button>
-<button class="mdl-button mdl-js-button mdl-button--raised" ng-click="Player.play(Player.player)">Play</button>
-<button class="mdl-button mdl-js-button mdl-button--raised" ng-click="Player.pause(Player.player)">Pause</button>
-<button class="mdl-button mdl-js-button mdl-button--raised" ng-click="Player.next(Player.player)">Next</button>
-
-<div>Song: {{currentSong}}</div>
-<div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}} - {{totalTime | date: 'mm:ss'}}</div>
+<i class="fa fa-backward" ng-click="Player.previous(Player.player)"></i>
+<i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play" ng-click="Player.play(Player.player)"></i>
+<i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause" ng-click="Player.pause(Player.player)"></i>
+<i class="fa fa-forward" ng-click="Player.next(Player.player)"></i>
+<div class="mdl-grid">
+       <div class="mdl-cell mdl-cell--1-col">
+              <div>{{currentSong}}</div>
+       </div>
+       <div class="mdl-cell mdl-cell--11-col">
+              <div class="mdl-grid">
+                     <div class="mdl-cell mdl-cell--1-col">
+                            <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>
+                     </div>
+                     <div class="mdl-cell mdl-cell--10-col">
+                            <input id="songDuration" class="mdl-slider mdl-js-slider" type="range"
+                            min="0" max="{{totalTime}}" value="0" tabindex="0"/>
+                     </div>
+                     <div class="mdl-cell mdl-cell--1-col">
+                            <div ng-if="Player.player!=='test'">{{totalTime | date: 'mm:ss'}}</div>
+                     </div>
+              </div>
+       </div>
+</div>

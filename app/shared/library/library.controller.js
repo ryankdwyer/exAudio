@@ -1,4 +1,6 @@
 app.controller('LibraryCtrl', function ($scope, Storage, $rootScope) {
+    $scope.sortType = null;
+    $scope.sortReverse = false;
     Storage.init();
 
     $rootScope.$on('dbLoaded', function() {
