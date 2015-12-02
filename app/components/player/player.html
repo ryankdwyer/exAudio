@@ -1,12 +1,12 @@
-<i class="fa fa-backward" ng-click="Player.previous(Player.player)"></i>
-<i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play" ng-click="Player.play(Player.player)"></i>
-<i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause" ng-click="Player.pause(Player.player)"></i>
-<i class="fa fa-forward" ng-click="Player.next(Player.player)"></i>
+<i class="fa fa-backward fa-2x" ng-click="Player.previous(Player.player)"></i>
+<i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play fa-2x" ng-click="Player.play(Player.player)"></i>
+<i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause fa-2x" ng-click="Player.pause(Player.player)"></i>
+<i class="fa fa-forward fa-2x" ng-click="Player.next(Player.player)"></i>
 <div class="mdl-grid">
-       <div class="mdl-cell mdl-cell--1-col">
+       <div class="mdl-cell mdl-cell--3-col">
               <div>{{currentSong}}</div>
        </div>
-       <div class="mdl-cell mdl-cell--11-col">
+       <div class="mdl-cell mdl-cell--9-col">
               <div class="mdl-grid">
                      <div class="mdl-cell mdl-cell--1-col">
                             <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>

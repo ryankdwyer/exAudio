@@ -1,3 +1,11 @@
 body {
     overflow-y: hidden;
 }
+
+[ng-click] {
+    cursor: pointer;
+}
+
+[ng-dblclick] {
+    cursor: pointer;
+}

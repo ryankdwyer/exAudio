@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.4.8",
+    "angular-ui-grid": "^3.0.7",
     "lokijs": "^1.3.10",
     "musicmetadata": "^2.0.2"
-  }
+  },
+  "devDependencies": {}
 }

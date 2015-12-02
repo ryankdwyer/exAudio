@@ -1,10 +1,36 @@
 #library {
-    margin: 10px;
-    width: 600px;
+    width: 100%;
 }
-
 #library-body {
-    height:200px;
+    height:475px;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+table {
+    table-layout: fixed;
+
+}
+
+table tr {
+    height: 1em;
+}
+
+td {
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.playing {
+    background-color: #A8A8A8;
+}
+.playButtonCell {
+    width: 75px;
+}
+
+.deleteButtonCell {
+    width: 75px;
 }
