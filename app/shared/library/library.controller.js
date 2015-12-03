@@ -3,10 +3,19 @@ app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerServi
     $scope.sortReverse = false;
     $scope.selectedIndex = -1;
 
+    ipc.on('newSongsAdded', function (err) {
+        Storage.collection = Storage.db.getCollection('songs');
+        $scope.$apply($scope.songs = Storage.collection.data);
+    });
+
     $scope.removeSong = function(lokiId) {
         Storage.collection.remove(lokiId);
         Storage.db.saveDatabase();
-    }
+    };
+
+    $scope.playSong = function (songPath, idx) {
+        PlayerService.playSong(songPath, idx);
+    };
 
     $scope.selectedSong = function (idx) {
         $scope.selectedIndex = idx;

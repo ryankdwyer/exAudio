@@ -1,9 +1,11 @@
 'use strict';
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
+var ipc = require('ipc');
 require('crash-reporter').start();
 
 var mainWindow = null;
+var insertWindow = null;
 
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -24,4 +26,29 @@ app.on('ready', function() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+});
+
+function createInsertWindow() {
+  insertWindow = new BrowserWindow({
+    width: 640,
+    height: 480,
+    show: false
+  });
+
+  insertWindow.loadUrl('file://' + __dirname + '/addSongs.html');
+
+  insertWindow.on('closed',function() {
+    insertWindow = null;
+  });
+}
+
+ipc.on('open-add-songs', function() {
+  if(!insertWindow) {
+    createInsertWindow();
+  }
+  return (!insertWindow.isClosed() && insertWindow.isVisible()) ? insertWindow.hide() : insertWindow.show();
+});
+
+ipc.on('newSongsAdded', function () {
+  mainWindow.webContents.send('newSongsAdded');
 });

@@ -1,11 +1,7 @@
-app.controller('UploaderCtrl', function ($scope, PlayerService, Storage, $rootScope ) {
+app.controller('UploaderCtrl', function ($scope, Storage, $rootScope ) {
     var songInput = $id('song-input');
-
+    Storage.init();
     songInput.addEventListener("change", fileSelectHandler, false);
-
-    $scope.playSong = function (songPath, idx) {
-        PlayerService.playSong(songPath, idx);
-    };
 
     function $id(id) {
         return document.getElementById(id);
@@ -14,21 +10,27 @@ app.controller('UploaderCtrl', function ($scope, PlayerService, Storage, $rootSc
     function fileSelectHandler (e) {
         var files = e.target.files || e.dataTransfer.files;
         var songsToAdd = [];
+        var dateStart = Date.now();
         for (var i = 0; i < files.length;i++) {
             songsToAdd.push(parseFile(files[i]));
         }
-        return Promise.all(songsToAdd)
+        Promise.all(songsToAdd)
         .then(function(songs) {
-            $rootScope.$emit('newSongsAdded');
+            Storage.addSongs(songs)
+            .then(function() {
+                ipc.send('newSongsAdded');
+                ipc.send('open-add-songs');
+            });
         })
     }
 
     function parseFile(file) {
-        mm(fs.createReadStream(file.path), function (err, metadata) {
-            if (err) throw err;
-            metadata.path = file.path;
-            Storage.addSongs(metadata);
-            $scope.$digest();
-        });
+        return new Promise(function(resolve, reject) {
+            mm(fs.createReadStream(file.path), function (err, metadata) {
+                if (err) reject(err);
+                metadata.path = file.path;
+                resolve(metadata);
+            });
+        })
     }
-})
+});
