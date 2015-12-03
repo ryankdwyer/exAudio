@@ -1,15 +1,19 @@
 #library {
     width: 100%;
+    margin-top: 30px;
 }
 #library-body {
-    height:475px;
+    height:82%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
 table {
-    table-layout: fixed;
+    width: 100%;
+}
 
+table {
+    table-layout: fixed;
 }
 
 table tr {
@@ -28,9 +32,19 @@ td {
     background-color: #A8A8A8;
 }
 .playButtonCell {
-    width: 75px;
+    width: 50px;
+    text-align: center;
 }
 
 .deleteButtonCell {
     width: 75px;
+    text-align: center;
+}
+
+.trackCell {
+    text-align: center;
+}
+
+.durationCell {
+    text-align: center;
 }

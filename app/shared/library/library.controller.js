@@ -3,6 +3,8 @@ app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerServi
     $scope.sortReverse = false;
     $scope.selectedIndex = -1;
 
+    Storage.init();
+
     ipc.on('newSongsAdded', function (err) {
         Storage.collection = Storage.db.getCollection('songs');
         $scope.$apply($scope.songs = Storage.collection.data);
@@ -13,15 +15,13 @@ app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerServi
         Storage.db.saveDatabase();
     };
 
-    $scope.playSong = function (songPath, idx) {
-        PlayerService.playSong(songPath, idx);
+    $scope.playSong = function (song, idx) {
+        PlayerService.playSong(song, idx);
     };
 
     $scope.selectedSong = function (idx) {
         $scope.selectedIndex = idx;
     };
-
-    Storage.init();
 
     $rootScope.$on('dbLoaded', function() {
         $scope.$apply($scope.songs = Storage.collection.data);
@@ -30,4 +30,5 @@ app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerServi
     $rootScope.$on('newSongsAdded', function (event) {
         $scope.$apply($scope.songs = Storage.collection.data);
     });
+
 });

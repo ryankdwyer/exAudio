@@ -1,22 +1,26 @@
-<i class="fa fa-backward fa-2x" ng-click="Player.previous(Player.player)"></i>
-<i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play fa-2x" ng-click="Player.play(Player.player)"></i>
-<i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause fa-2x" ng-click="Player.pause(Player.player)"></i>
-<i class="fa fa-forward fa-2x" ng-click="Player.next(Player.player)"></i>
-<div class="mdl-grid">
-       <div class="mdl-cell mdl-cell--3-col">
+<div class="row" id="player">
+       <div class="col-xs-2">
+              <i class="fa fa-backward fa-2x" ng-click="Player.previous(Player.player)"></i>
+              <i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play fa-2x" ng-click="Player.play(Player.player)"></i>
+              <i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause fa-2x" ng-click="Player.pause(Player.player)"></i>
+              <i class="fa fa-forward fa-2x" ng-click="Player.next(Player.player)"></i>
+       </div>
+       <div class="col-xs-3">
               <div>{{currentSong}}</div>
        </div>
-       <div class="mdl-cell mdl-cell--9-col">
-              <div class="mdl-grid">
-                     <div class="mdl-cell mdl-cell--1-col">
+       <div class="col-xs-7">
+              <div class="row">
+                     <div class="col-xs-1 text-right">
                             <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>
+                            <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
                      </div>
-                     <div class="mdl-cell mdl-cell--10-col">
-                            <input id="songDuration" class="mdl-slider mdl-js-slider" type="range"
+                     <div class="col-xs-10 text-center">
+                             <input id="songDuration" class="mdl-slider mdl-js-slider" type="range"
                             min="0" max="{{totalTime}}" value="0" tabindex="0"/>
                      </div>
-                     <div class="mdl-cell mdl-cell--1-col">
+                     <div class="col-xs-1 text-left">
                             <div ng-if="Player.player!=='test'">{{totalTime | date: 'mm:ss'}}</div>
+                            <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
                      </div>
               </div>
        </div>

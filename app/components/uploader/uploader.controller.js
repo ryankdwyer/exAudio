@@ -29,8 +29,20 @@ app.controller('UploaderCtrl', function ($scope, Storage, $rootScope ) {
             mm(fs.createReadStream(file.path), function (err, metadata) {
                 if (err) reject(err);
                 metadata.path = file.path;
-                resolve(metadata);
+                resolve(createMetadataObject(metadata));
             });
         })
+    }
+
+    function createMetadataObject (songData) {
+        return {
+            album: songData.album,
+            artist: songData.artist,
+            title: songData.title,
+            duration: songData.duration,
+            path: songData.path,
+            track: songData.track,
+            year: songData.year
+        }
     }
 });
