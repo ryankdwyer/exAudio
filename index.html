@@ -45,9 +45,12 @@
 
 <body ng-app="exaudio">
     <header></header>
-    <uploader></uploader>
-    <library></library>
-    <player></player>
+    <div class="row">
+        <library></library>
+    </div>
+    <div class="row">
+        <player></player>
+    </div>
     <script>
     var mm = require('musicmetadata'),
         fs = require('fs'),

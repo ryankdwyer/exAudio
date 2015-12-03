@@ -1,18 +1,17 @@
 #library {
     width: 100%;
     margin-top: 30px;
+    display: block;
 }
 #library-body {
-    height:82%;
+    height:558px;
     overflow-y: scroll;
     overflow-x: hidden;
+    display: block;
 }
 
 table {
     width: 100%;
-}
-
-table {
     table-layout: fixed;
 }
 
