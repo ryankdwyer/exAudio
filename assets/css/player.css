@@ -1,8 +1,9 @@
 #player {
-    position: absolute;
-    margin-top: 45px;
+    position: fixed;
+    bottom: 0;
     width: 95%;
     text-align: center;
+    margin-bottom: 15px;
 }
 
 #songDuration, #volume {

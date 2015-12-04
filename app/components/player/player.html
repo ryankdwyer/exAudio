@@ -6,7 +6,11 @@
               <i class="fa fa-forward fa-2x" ng-click="Player.next(Player.player)"></i>
        </div>
        <div class="col-xs-3">
-              <div>{{currentSong}}</div>
+              <marquee>
+                     <span>{{currentSong}}</span>
+                     <span>Audio Codec: {{Player.player.format.formatID}}</span>
+                     <span>Sample Rate: {{Player.player.format.sampleRate}}</span>
+              </marquee>
        </div>
        <div class="col-xs-7">
               <div class="row">

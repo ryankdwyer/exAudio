@@ -11,7 +11,7 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope) {
     }
 
     $rootScope.$on('songStarted', function (event, playerObj) {
-    	var song = playerObj.asset.metadata.artist + ' - ' + playerObj.asset.metadata.title;
+    	var song = (playerObj.asset.metadata.artist || playerObj.metadata.albumArtist) + ' - ' + (playerObj.asset.metadata.title || '');
         $scope.totalTime = playerObj.duration;
     	$scope.currentSong = song;
     });
@@ -23,7 +23,7 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope) {
 
     $scope.changeVolume = function (value) {
         $scope.Player.player.volume = value;
-    }
+    };
 
     $scope.seekTo = function (value) {
         $scope.Player.player.device.seek(value/1000);
