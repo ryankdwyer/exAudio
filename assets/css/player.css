@@ -5,7 +5,7 @@
     text-align: center;
 }
 
-#songDuration {
+#songDuration, #volume {
     margin-left: 0;
     margin-right: 0;
     margin-top: 2px;

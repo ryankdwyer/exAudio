@@ -14,13 +14,17 @@
                             <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>
                             <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
                      </div>
-                     <div class="col-xs-10 text-center">
+                     <div class="col-xs-8 text-center">
                              <input id="songDuration" class="mdl-slider mdl-js-slider" type="range"
-                            min="0" max="{{totalTime}}" value="0" tabindex="0"/>
+                            min="0" max="{{totalTime}}" value="0" tabindex="0" ng-model="seekTime" ng-change="seekTo(seekTime)"/>
                      </div>
                      <div class="col-xs-1 text-left">
                             <div ng-if="Player.player!=='test'">{{totalTime | date: 'mm:ss'}}</div>
                             <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
+                     </div>
+                     <div class="col-xs-2 text-center">
+                            <input id="volume" class="mdl-slider mdl-js-slider" type="range"
+                                   min="0" max="100" value="{{Player.player.volume || 100}}" tabindex="0" ng-model="volume" ng-change="changeVolume(volume)"/>
                      </div>
               </div>
        </div>
