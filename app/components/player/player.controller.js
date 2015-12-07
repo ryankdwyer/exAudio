@@ -1,4 +1,4 @@
-app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope) {
+app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeout) {
     $scope.Player = PlayerService;
     $scope.currentSong = 'test';
     $scope.totalTime = null;
@@ -25,7 +25,12 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope) {
         $scope.Player.player.volume = value;
     };
 
-    $scope.seekTo = function (value) {
-        $scope.Player.player.device.seek(value/1000);
-    }
+    //$scope.seekTo = function (value) {
+    //    //$scope.Player.player.pause();
+    //    $timeout(function () {
+    //        $scope.Player.player.device.seek(value/1000);
+    //        console.log($scope.Player.player.device);
+    //        //$scope.Player.player.play();
+    //    }, 500)
+    //}
 });

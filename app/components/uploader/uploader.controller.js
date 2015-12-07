@@ -17,8 +17,9 @@ app.controller('UploaderCtrl', function ($scope, Storage, $rootScope ) {
         Promise.all(songsToAdd)
         .then(function(songs) {
             Storage.addSongs(songs)
-            .then(function() {
-                ipc.send('newSongsAdded');
+            .then(function(collection) {
+                    console.log('uploader', songs);
+                ipc.send('newSongsAdded', songs);
                 ipc.send('open-add-songs');
             });
         })

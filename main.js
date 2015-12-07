@@ -45,6 +45,6 @@ ipc.on('open-add-songs', function() {
   return (!insertWindow.isClosed() && insertWindow.isVisible()) ? insertWindow.hide() : insertWindow.show();
 });
 
-ipc.on('newSongsAdded', function () {
-  mainWindow.webContents.send('newSongsAdded');
+ipc.on('newSongsAdded', function (event, songs) {
+  mainWindow.webContents.send('newSongsAdded', songs);
 });

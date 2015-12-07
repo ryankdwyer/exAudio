@@ -1,13 +1,12 @@
 app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerService) {
-    $scope.sortType = null;
+    $scope.sortType = 'artist';
     $scope.sortReverse = false;
     $scope.selectedIndex = -1;
 
     Storage.init();
 
-    ipc.on('newSongsAdded', function (err) {
-        Storage.collection = Storage.db.getCollection('songs');
-        $scope.$apply($scope.songs = Storage.collection.data);
+    ipc.on('newSongsAdded', function (songs) {
+        $scope.$apply($scope.songs = $scope.songs.concat(songs));
     });
 
     $scope.removeSong = function(lokiId) {
