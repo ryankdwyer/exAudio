@@ -1,0 +1,47 @@
+#filedrag {
+    display: none;
+    height: 75px;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em 0;
+    margin: 1em 0;
+    color: lightgray;
+    border: 2px dashed lightgray;
+/*// border-radius: 7px;*/
+    cursor: default;
+}
+
+#filedrag.hover {
+    color: #f00;
+    border-color: #51A351;
+    border-style: 3px dashed;
+/*// box-shadow: inset 0 3px 4px #888;*/
+    transform: scale(1.1);
+    transition: .4s ease-in-out
+}
+
+#song-input {
+    width: 0.1px !important;
+    height: 0.1px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    z-index: -1 !important;
+}
+
+#input-label {
+    width: 98%;
+    text-align: center;
+    padding: 5px;
+    font-weight: 700;
+    color: white;
+    display: inline-block;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#input-label:focus,
+#input-label:hover {
+    background-color: white;
+    color: black;
+}

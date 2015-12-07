@@ -9,7 +9,8 @@ app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerServi
         $scope.$apply($scope.songs = $scope.songs.concat(songs));
     });
 
-    $scope.removeSong = function(lokiId) {
+    $scope.removeSong = function(lokiId, $index) {
+        $scope.songs.splice($index, 1);
         Storage.collection.remove(lokiId);
         Storage.db.saveDatabase();
     };

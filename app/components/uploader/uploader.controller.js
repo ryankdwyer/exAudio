@@ -1,13 +1,25 @@
 app.controller('UploaderCtrl', function ($scope, Storage, $rootScope ) {
     var songInput = $id('song-input');
+    var fileDrag = $id('file-drag');
     Storage.init();
     songInput.addEventListener("change", fileSelectHandler, false);
+    filedrag.addEventListener("dragover", fileDragHover, false);
+    filedrag.addEventListener("dragleave", fileDragHover, false);
+    filedrag.addEventListener("drop", fileSelectHandler, false);
+    filedrag.style.display = "block";
 
     function $id(id) {
         return document.getElementById(id);
     }
 
+    function fileDragHover(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        e.target.className = (e.type == "dragover" ? "hover" : "");
+    }
+
     function fileSelectHandler (e) {
+        fileDragHover(e);
         var files = e.target.files || e.dataTransfer.files;
         var songsToAdd = [];
         var dateStart = Date.now();

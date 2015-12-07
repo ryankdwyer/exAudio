@@ -1,12 +1,14 @@
 <!DOCTYPE html>
+<meta charset="utf-8">
 <html>
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="node_modules/angular/angular.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
     <script src="node_modules/lokijs/src/loki-angular.js"></script>
+    <script src="node_modules/lokijs/src/lokijs.js"></script>
     <script src="node_modules/lokijs/src/lokijs.js"></script>
     <script src="app/app.js"></script>
     <script src="app/db/storage.service.js"></script>
@@ -23,20 +25,22 @@
     <script src="app/components/player/player.controller.js"></script>
     <script src="app/components/player/player.service.js"></script>
     <script src="app/components/player/player.js"></script>
+    <script src="app/components/visualizer/visualizer.js"></script>
+    <script src="app/components/visualizer/visualizer.controller.js"></script>
+    <script src="app/components/visualizer/visualizer.service.js"></script>
     <script src="node_modules/av/aurora.js"></script>
     <script src="node_modules/flac.js/build/flac.js"></script>
     <script src="node_modules/mp3.js/build/mp3.js"></script>
     <script src="node_modules/aac.js/aac.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="assets/css/library.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/search.css">
     <link rel="stylesheet" href="assets/css/player.css">
-    <link rel="stylesheet" href="assets/css/songInput.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -52,12 +56,16 @@
     <div class="row">
         <player></player>
     </div>
+    <div class="row">
+        <visualizer></visualizer>
+    </div>
     <script>
     var mm = require('musicmetadata'),
         fs = require('fs'),
         loki = require('lokijs'),
         path = require('path'),
-        ipc = require('ipc');
+        ipc = require('ipc'),
+            d3 = require('d3');
     </script>
 </body>
 

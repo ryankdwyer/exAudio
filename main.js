@@ -26,8 +26,8 @@ app.on('ready', function() {
 
 function createInsertWindow() {
   insertWindow = new BrowserWindow({
-    width: 640,
-    height: 480,
+    width: 320,
+    height: 240,
     show: false
   });
 
