@@ -1,6 +1,6 @@
 # exAudio
 
-A cross platform audio player built in Electron. exAudio is capable of storing and playing a library of various audio files in an array of codecs, including:
+A cross platform audio player built in Electron. I have a large collection of lossless audio files, mostly in flac. I was unsatisfied with the current options available, so I built my own. exAudio is capable of storing and playing a library of various audio files in an array of codecs, including:
 
 1. flac
 2. alac
