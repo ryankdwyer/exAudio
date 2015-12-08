@@ -4,4 +4,4 @@ app.directive('uploader', function () {
         templateUrl: './app/components/uploader/uploader.html',
         controller: 'UploaderCtrl'
     }
-})
+});
