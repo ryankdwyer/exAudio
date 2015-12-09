@@ -51,3 +51,7 @@
 .durationCell {
     text-align: center;
 }
+
+.row {
+    margin: 0 !important;
+}

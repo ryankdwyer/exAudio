@@ -1,5 +1,4 @@
 <div id="library">
-	<div>
 		<div class="row" id="libraryHeader">
 			<div class="col-xs-1">
 			</div>
@@ -55,7 +54,7 @@
 			</div>
 		</div>
 		<div  id="library-body">
-			<div class="songRow row " ng-class='{playing: $index == Player.player.idx}' ng-repeat="song in (orderedSongs = (songs | orderBy:sortType:sortReverse | filter:searchSong)) track by $index" ng-dblclick="playSong(song, $index); selectedSong($index)">
+			<div class="songRow row" ng-class='{playing: $index == Player.player.idx}' ng-repeat="song in (orderedSongs = (songs | orderBy:sortType:sortReverse | filter:searchSong)) track by $index" ng-dblclick="playSong(song, $index); selectedSong($index)">
 				<div class="col-xs-1 playButtonCell text-center">
 						<i ng-hide="$index == Player.player.idx && Player.getPlayerStatus(Player.player)" class="fa fa-play" ng-click="playSong(song, $index); selectedSong($index)"></i>
 						<i ng-show="$index == Player.player.idx && Player.getPlayerStatus(Player.player)" class="fa fa-pause" ng-click="Player.pause(Player.player)"></i>
@@ -80,5 +79,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </div>

@@ -25,6 +25,8 @@ app.factory('PlayerService', function (Storage, $rootScope) {
                     self.updateDuration(song,self.player);
                     $rootScope.$emit('songStarted', self.player);
                     self.playing = true;
+                    //self.filter = self.player.device.device.context.createBiquadFilter();
+                    //self.filter.connect(self.player.device.device.context.destination);
                 });
                 self.player.play();
             });
