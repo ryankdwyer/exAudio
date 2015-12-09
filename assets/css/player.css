@@ -1,7 +1,9 @@
+#footer-wrapper {
+    background-color: #666666;
+}
 #player {
     position: fixed;
     bottom: 0;
-    width: 95%;
     text-align: center;
     margin-bottom: 15px;
 }
