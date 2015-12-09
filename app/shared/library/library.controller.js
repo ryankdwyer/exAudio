@@ -1,4 +1,4 @@
-app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerService) {
+app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerService, $timeout) {
     $scope.sortType = 'artist';
     $scope.sortReverse = false;
     $scope.selectedIndex = -1;
@@ -22,12 +22,29 @@ app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerServi
         $scope.selectedIndex = idx;
     };
 
+    $scope.orderChange = function () {
+        $timeout(function () {
+            var song = Storage.orderedSongs[PlayerService.player.idx];
+            Storage.orderedSongs = $scope.orderedSongs;
+            PlayerService.player.idx = matchLokiId(song.$loki);
+        }, 100);
+    };
+
     $rootScope.$on('dbLoaded', function() {
         $scope.$apply($scope.songs = Storage.collection.data);
+        Storage.orderedSongs = $scope.orderedSongs;
     });
 
     $rootScope.$on('newSongsAdded', function (event) {
         $scope.$apply($scope.songs = Storage.collection.data);
     });
 
+    // Replace with lodash
+    var matchLokiId = function (lokiId) {
+        for (var i = 0; i < Storage.orderedSongs.length; i++) {
+            if (lokiId === Storage.orderedSongs[i].$loki) {
+                return i;
+            }
+        }
+    }
 });

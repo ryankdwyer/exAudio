@@ -4,7 +4,7 @@
 			<div class="col-xs-1">
 			</div>
 			<div class="col-xs-3">
-				<div ng-click="sortType='title'; sortReverse = !sortReverse">
+				<div ng-click="sortType='title'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Title
 						<span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
@@ -13,7 +13,7 @@
 				</div>
 			</div>
 			<div class="col-xs-2">
-				<div ng-click="sortType='artist'; sortReverse = !sortReverse">
+				<div ng-click="sortType='artist'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Artist
 						<span ng-show="sortType == 'artist' && !sortReverse" class="fa fa-caret-down"></span>
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="col-xs-2">
-				<div ng-click="sortType='album'; sortReverse = !sortReverse">
+				<div ng-click="sortType='album'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Album
 						<span ng-show="sortType == 'album' && !sortReverse" class="fa fa-caret-down"></span>
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 			<div class="col-xs-1 text-center">
-				<div class="durationCell" ng-click="sortType='duration'; sortReverse = !sortReverse">
+				<div class="durationCell" ng-click="sortType='duration'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Duration
 						<span ng-show="sortType == 'duration' && !sortReverse" class="fa fa-caret-down"></span>
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div class="col-xs-1 text-center">
-				<div class="trackCell" ng-click="sortType='track.no'; sortReverse = !sortReverse">
+				<div class="trackCell" ng-click="sortType='track.no'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Track
 						<span ng-show="sortType == 'track.no' && !sortReverse" class="fa fa-caret-down"></span>
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<div  id="library-body">
-			<div class="songRow row " ng-class='{playing: $index == Player.player.idx}' ng-repeat="song in songs | orderBy:sortType:sortReverse | filter:searchSong track by $index" ng-dblclick="playSong(song, $index); selectedSong($index)">
+			<div class="songRow row " ng-class='{playing: $index == Player.player.idx}' ng-repeat="song in (orderedSongs = (songs | orderBy:sortType:sortReverse | filter:searchSong)) track by $index" ng-dblclick="playSong(song, $index); selectedSong($index)">
 				<div class="col-xs-1 playButtonCell text-center">
 						<i ng-hide="$index == Player.player.idx && Player.getPlayerStatus(Player.player)" class="fa fa-play" ng-click="playSong(song, $index); selectedSong($index)"></i>
 						<i ng-show="$index == Player.player.idx && Player.getPlayerStatus(Player.player)" class="fa fa-pause" ng-click="Player.pause(Player.player)"></i>

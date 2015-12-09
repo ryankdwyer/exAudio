@@ -11,10 +11,10 @@ app.factory('PlayerService', function (Storage, $rootScope) {
                 self.player = AV.Player.fromBuffer(songBuffer);
                 self.player.idx = idx;
                 self.player.on('end', function () {
-                    var nextSongIdx = self.player.idx + 1;
+                    var nextSongIdx = Storage.orderedSongs.indexOf(song) + 1;
                     if (nextSongIdx >= Storage.collection.data.length) return false;
                     else {
-                        var nextSong = Storage.collection.data[nextSongIdx];
+                        var nextSong = Storage.orderedSongs[nextSongIdx];
                         self.playSong(nextSong, nextSongIdx);
                     }
                 });
@@ -52,7 +52,7 @@ app.factory('PlayerService', function (Storage, $rootScope) {
                 var nextSongIdx = player.idx + 1;
                 if (nextSongIdx >= Storage.collection.data.length) return false;
                 else {
-                    var nextSong = Storage.collection.data[nextSongIdx];
+                    var nextSong = Storage.orderedSongs[nextSongIdx];
                     this.playSong(nextSong, nextSongIdx);
                 }
             }
@@ -62,7 +62,7 @@ app.factory('PlayerService', function (Storage, $rootScope) {
                 var prevSongIdx = player.idx - 1;
                 if (prevSongIdx < 0) return false;
                 else {
-                    var nextSong = Storage.collection.data[prevSongIdx];
+                    var nextSong = Storage.orderedSongs[prevSongIdx];
                     this.playSong(nextSong, prevSongIdx);
                 }
             }
