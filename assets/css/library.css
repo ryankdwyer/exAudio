@@ -26,6 +26,10 @@
     white-space: nowrap;
 }
 
+.songRow:hover {
+    background-color: #777777;
+}
+
 #libraryHeader {
     font-size: 1.3em;
     border-bottom: 2px solid greenyellow;
@@ -33,25 +37,4 @@
 }
 .playing {
     background-color: #A8A8A8;
-}
-.playButtonCell {
-    width: 50px;
-    text-align: center;
-}
-
-.deleteButtonCell {
-    width: 75px;
-    text-align: center;
-}
-
-.trackCell {
-    text-align: center;
-}
-
-.durationCell {
-    text-align: center;
-}
-
-.row {
-    margin: 0 !important;
 }

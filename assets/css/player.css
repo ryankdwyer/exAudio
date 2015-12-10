@@ -1,25 +1,25 @@
-#footer-wrapper {
+footer {
     background-color: #666666;
 }
 #player {
-    position: fixed;
-    bottom: 0;
-    text-align: center;
-    margin-bottom: 15px;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*text-align: center;*/
+    /*margin-bottom: 15px;*/
 }
 
-#songDuration, #volume {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 2px;
-}
+/*#songDuration, #volume {*/
+    /*margin-left: 0;*/
+    /*margin-right: 0;*/
+    /*margin-top: 2px;*/
+/*}*/
 
 input[type=range]{
     -webkit-appearance: none;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-    width: 300px;
+    /*width: 300px;*/
     height: 5px;
     background: #ddd;
     border: none;

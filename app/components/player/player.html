@@ -1,39 +1,33 @@
-<div id="footer-wrapper" style="background-color: #666666 !important;">
-       <footer >
-              <div class="row" id="player">
-                     <div class="col-xs-2 text-center">
-                            <i class="fa fa-backward fa-2x" ng-click="Player.previous(Player.player)"></i>
-                            <i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play fa-2x" ng-click="Player.play(Player.player)"></i>
-                            <i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause fa-2x" ng-click="Player.pause(Player.player)"></i>
-                            <i class="fa fa-forward fa-2x" ng-click="Player.next(Player.player)"></i>
-                     </div>
-                     <div class="col-xs-3 text-center">
-                            <marquee>
-                                   <span>{{currentSong}}</span>
-                                   <span>Audio Codec: {{Player.player.format.formatID}}</span>
-                                   <span>Sample Rate: {{Player.player.format.sampleRate}}</span>
-                            </marquee>
-                     </div>
-                     <div class="col-xs-7">
-                            <div class="row">
-                                   <div class="col-xs-1 text-right">
-                                          <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>
-                                          <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
-                                   </div>
-                                   <div class="col-xs-8 text-center">
-                                           <input id="songDuration" class="mdl-slider mdl-js-slider" type="range"
-                                          min="0" max="{{totalTime}}" value="0" tabindex="0" ng-model="seekTime" ng-change="seekTo(seekTime)"/>
-                                   </div>
-                                   <div class="col-xs-1 text-left">
-                                          <div ng-if="Player.player!=='test'">{{totalTime | date: 'mm:ss'}}</div>
-                                          <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
-                                   </div>
-                                   <div class="col-xs-2 text-center">
-                                          <input id="volume" class="mdl-slider mdl-js-slider" type="range"
-                                                 min="0" max="100" value="{{Player.player.volume || 100}}" tabindex="0" ng-model="volume" ng-change="changeVolume(volume)"/>
-                                   </div>
-                            </div>
-                     </div>
+<footer>
+       <div class="clearfix fixed bottom-0 left-0 right-0" id="player">
+              <div class="col col-2 center mb1">
+                     <i class="fa fa-backward fa-2x" ng-click="Player.previous(Player.player)"></i>
+                     <i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play fa-2x" ng-click="Player.play(Player.player)"></i>
+                     <i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause fa-2x" ng-click="Player.pause(Player.player)"></i>
+                     <i class="fa fa-forward fa-2x" ng-click="Player.next(Player.player)"></i>
               </div>
-       </footer>
-</div>
+              <div class="col col-2 center mb1">
+                     <marquee>
+                            <span>{{currentSong}}</span>
+                            <span>Audio Codec: {{Player.player.format.formatID}}</span>
+                            <span>Sample Rate: {{Player.player.format.sampleRate}}</span>
+                     </marquee>
+              </div>
+              <div class="col col-1 center mb1">
+                     <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>
+                     <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
+              </div>
+              <div class="col col-4 center mt1">
+                      <input id="songDuration" class="inline" type="range"
+                     min="0" max="{{totalTime}}" value="0" tabindex="0" ng-model="seekTime" ng-change="seekTo(seekTime)"/>
+              </div>
+              <div class="col col-1 m0 center">
+                     <div ng-if="Player.player!=='test'">{{totalTime | date: 'mm:ss'}}</div>
+                     <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
+              </div>
+              <div class="col col-1 left mt1">
+                     <input id="volume" class="inline" type="range"
+                            min="0" max="100" value="{{Player.player.volume || 100}}" tabindex="0" ng-model="volume" ng-change="changeVolume(volume)"/>
+              </div>
+       </div>
+</footer>

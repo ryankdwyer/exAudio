@@ -1,8 +1,9 @@
 <div id="library">
-		<div class="row" id="libraryHeader">
-			<div class="col-xs-1">
+		<div class="clearfix" id="libraryHeader">
+			<div class="col col-1 center">
+				Play
 			</div>
-			<div class="col-xs-3">
+			<div class="col col-4">
 				<div ng-click="sortType='title'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Title
@@ -11,7 +12,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-2">
+			<div class="col col-2">
 				<div ng-click="sortType='artist'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Artist
@@ -20,7 +21,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-2">
+			<div class="col col-2">
 				<div ng-click="sortType='album'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Album
@@ -29,7 +30,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-1 text-center">
+			<div class="col col-1 center">
 				<div class="durationCell" ng-click="sortType='duration'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Duration
@@ -38,7 +39,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-1 text-center">
+			<div class="col col-1 center">
 				<div class="trackCell" ng-click="sortType='track.no'; sortReverse = !sortReverse; orderChange()">
 					<div>
 						Track
@@ -47,34 +48,34 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-1 text-center">
+			<div class="col col-1 center">
 				<div>
 					Manage
 				</div>
 			</div>
 		</div>
 		<div  id="library-body">
-			<div class="songRow row" ng-class='{playing: $index == Player.player.idx}' ng-repeat="song in (orderedSongs = (songs | orderBy:sortType:sortReverse | filter:searchSong)) track by $index" ng-dblclick="playSong(song, $index); selectedSong($index)">
-				<div class="col-xs-1 playButtonCell text-center">
+			<div class="songRow clearfix" ng-class='{playing: $index == Player.player.idx}' ng-repeat="song in (orderedSongs = (songs | orderBy:sortType:sortReverse | filter:searchSong)) track by $index" ng-dblclick="playSong(song, $index); selectedSong($index)">
+				<div class="col col-1 playButtonCell center">
 						<i ng-hide="$index == Player.player.idx && Player.getPlayerStatus(Player.player)" class="fa fa-play" ng-click="playSong(song, $index); selectedSong($index)"></i>
 						<i ng-show="$index == Player.player.idx && Player.getPlayerStatus(Player.player)" class="fa fa-pause" ng-click="Player.pause(Player.player)"></i>
 				</div>
-				<div class="col-xs-3">
+				<div class="col col-4">
 					{{song.title}}
 				</div>
-				<div class="col-xs-2">
+				<div class="col col-2">
 					{{song.artist[0]}}
 				</div>
-				<div class="col-xs-2">
+				<div class="col col-2">
 					{{song.album}}
 				</div>
-				<div class="col-xs-1 text-center">
+				<div class="col col-1 center">
 					{{song.duration * 1000| date: 'mm:ss'}}
 				</div>
-				<div class="col-xs-1 text-center">
+				<div class="col col-1 center">
 					{{song.track.no}}
 				</div>
-				<div class="col-xs-1 text-center">
+				<div class="col col-1 center">
 					<i class="fa fa-times-circle" ng-click="removeSong(song.$loki, $index)"></i>
 				</div>
 			</div>
