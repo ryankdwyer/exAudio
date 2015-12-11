@@ -1,24 +1,15 @@
 #library {
     width: 100%;
     margin-top: 60px;
-    display: block;
 }
 #library-body {
-    position:absolute;
     height: 80%;
     width: 100%;
-    overflow-y: scroll;
     overflow-x: hidden;
-    display: block;
-    margin: 0 !important;
 }
 
 .songRow {
-    font-size: 1.1em;
-    height: 30px;
-    border-bottom: 1px solid lightgray;
-    padding-top: 5px;
-    margin: 0 !important;
+    border-bottom: 1px solid lightgrey;
 }
 
 .songRow div {
@@ -27,14 +18,13 @@
 }
 
 .songRow:hover {
-    background-color: #777777;
+    background-color: darkgray;
 }
 
 #libraryHeader {
     font-size: 1.3em;
     border-bottom: 2px solid greenyellow;
-    padding-bottom: 5px;
 }
 .playing {
-    background-color: #A8A8A8;
+    background-color: darkgray;
 }

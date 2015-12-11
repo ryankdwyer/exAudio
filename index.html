@@ -29,7 +29,6 @@
     <script src="node_modules/flac.js/build/flac.js"></script>
     <script src="node_modules/mp3.js/build/mp3.js"></script>
     <script src="node_modules/aac.js/aac.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/search.css">
@@ -63,7 +62,7 @@
         fs = require('fs'),
         loki = require('lokijs'),
         path = require('path'),
-        ipc = require('ipc');
+        ipc = require('electron').ipcRenderer;
 //        d3 = require('d3'),
 //        fft = require('fft-js').fft,
 //        fftUtil = require('fft-js').util;
