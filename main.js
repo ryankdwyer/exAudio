@@ -2,7 +2,17 @@
 var app = require('app');
 var BrowserWindow = require('browser-window');
 var ipc = require('electron').ipcMain;
-require('crash-reporter').start();
+var crashReporter = require('electron').crashReporter
+
+crashReporter.start({
+  productName: 'MyAppName',
+  companyName: 'MyCompanyName',
+  submitURL: 'http://localhost:3000/',
+  autoSubmit: true
+});
+
+crashReporter.getLastCrashReport();
+
 require('electron-reload')(__dirname);
 
 var mainWindow = null;

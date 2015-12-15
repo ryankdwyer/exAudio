@@ -8,18 +8,18 @@ footer {
     /*margin-bottom: 15px;*/
 }
 
-/*#songDuration, #volume {*/
-    /*margin-left: 0;*/
-    /*margin-right: 0;*/
-    /*margin-top: 2px;*/
-/*}*/
+#songDuration, #volume {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 2px;
+}
 
 input[type=range]{
     -webkit-appearance: none;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-    /*width: 300px;*/
+    width: 300px;
     height: 5px;
     background: #ddd;
     border: none;
@@ -29,10 +29,10 @@ input[type=range]::-webkit-slider-runnable-track {
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: none;
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
     border-radius: 50%;
-    background: goldenrod;
+    background: greenyellow;
     margin-top: -4px;
 }
 

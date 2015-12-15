@@ -55,7 +55,7 @@
 					</div>
 				</div>
 			</div>
-			<div  id="library-body" class="block absolute overflow-scroll bg-black">
+			<div  id="library-body" class="block overflow-scroll bg-black">
 				<div class="songRow clearfix" ng-class='{playing: $index == Player.player.idx}' ng-repeat="song in (orderedSongs = (songs | orderBy:sortType:sortReverse | filter:searchSong)) track by $index" ng-dblclick="playSong(song, $index); selectedSong($index)">
 					<div class="col col-1 playButtonCell center bg-lighten-2 silver">
 							<i ng-hide="$index == Player.player.idx && Player.getPlayerStatus(Player.player)" class="fa fa-play" ng-click="playSong(song, $index); selectedSong($index)"></i>

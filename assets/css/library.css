@@ -1,11 +1,10 @@
 #library {
     width: 100%;
-    margin-top: 60px;
 }
 #library-body {
-    height: 80%;
+    min-height: 0;
     width: 100%;
-    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .songRow {

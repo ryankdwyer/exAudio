@@ -1,33 +1,31 @@
-<footer>
-       <div class="clearfix fixed bottom-0 left-0 right-0" id="player">
-              <div class="col col-2 center mb1">
+<footer class="bg-black">
+       <div class="clearfix bg-black fixed bottom-0 left-0 right-0 p2" id="player">
+              <div class="col col-2 center mb1 white">
                      <i class="fa fa-backward fa-2x" ng-click="Player.previous(Player.player)"></i>
                      <i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play fa-2x" ng-click="Player.play(Player.player)"></i>
                      <i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause fa-2x" ng-click="Player.pause(Player.player)"></i>
                      <i class="fa fa-forward fa-2x" ng-click="Player.next(Player.player)"></i>
               </div>
-              <div class="col col-2 center mb1">
+              <div class="col col-2 center mb1 white">
                      <marquee>
                             <span>{{currentSong}}</span>
-                            <span>Audio Codec: {{Player.player.format.formatID}}</span>
-                            <span>Sample Rate: {{Player.player.format.sampleRate}}</span>
                      </marquee>
               </div>
-              <div class="col col-1 center mb1">
+              <div class="col col-1 center mb1 white">
                      <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>
                      <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
               </div>
-              <div class="col col-4 center mt1">
-                      <input id="songDuration" class="inline" type="range"
+              <div class="col col-4 center m0 white">
+                      <input id="songDuration" class="inline" type="range" style="width:300px;"
                      min="0" max="{{totalTime}}" value="0" tabindex="0" ng-model="seekTime" ng-change="seekTo(seekTime)"/>
               </div>
-              <div class="col col-1 m0 center">
+              <div class="col col-1 m0 center white">
                      <div ng-if="Player.player!=='test'">{{totalTime | date: 'mm:ss'}}</div>
                      <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
               </div>
-              <div class="col col-1 left mt1">
+              <div class="col col-1 left m0 white">
                      <input id="volume" class="inline" type="range"
-                            min="0" max="100" value="{{Player.player.volume || 100}}" tabindex="0" ng-model="volume" ng-change="changeVolume(volume)"/>
+                            min="0" max="100" value="{{100 || Player.player.volume}}" tabindex="0" ng-model="volume" ng-change="changeVolume(volume)"/>
               </div>
        </div>
 </footer>
