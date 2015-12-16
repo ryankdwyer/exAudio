@@ -3,10 +3,9 @@
 <html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/angular/angular.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+    <script src="node_modules/lokijs/src/loki-angular.js"></script>
     <script src="node_modules/lokijs/src/loki-angular.js"></script>
     <script src="node_modules/lokijs/src/lokijs.js"></script>
     <script src="node_modules/lokijs/src/lokijs.js"></script>
@@ -15,8 +14,6 @@
     <script src="app/db/storage.controller.js"></script>
     <script src="app/shared/header/header.directive.js"></script>
     <script src="app/shared/header/header.controller.js"></script>
-    <script src="app/shared/footer/footer.directive.js"></script>
-    <script src="app/shared/footer/footer.controller.js"></script>
     <script src="app/shared/library/library.controller.js"></script>
     <script src="app/shared/library/library.directive.js"></script>
     <script src="app/shared/search/search.directive.js"></script>
@@ -32,39 +29,36 @@
     <script src="node_modules/flac.js/build/flac.js"></script>
     <script src="node_modules/mp3.js/build/mp3.js"></script>
     <script src="node_modules/aac.js/aac.js"></script>
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
 
-    <link rel="stylesheet" href="assets/css/library.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="assets/css/library.css">
     <link rel="stylesheet" href="assets/css/player.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/7.0.4/basscss.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <title>ExAudio</title>
 </head>
 
-<body ng-app="exaudio">
-    <header></header>
-    <div class="row">
-        <library></library>
-    </div>
-    <div class="row">
-        <player></player>
-    </div>
-    <div class="row">
-        <visualizer></visualizer>
-    </div>
+<body ng-app="exaudio" class="bg-black">
+        <div class="flex flex-column" style="min-height: 100vh">
+            <div>
+                <header></header>
+            </div>
+            <div class="flex-auto">
+                <library></library>
+            </div>
+            <div>
+                <player></player>
+            </div>
+        </div>
     <script>
     var mm = require('musicmetadata'),
         fs = require('fs'),
         loki = require('lokijs'),
         path = require('path'),
-        ipc = require('ipc');
+        ipc = require('electron').ipcRenderer;
 //        d3 = require('d3'),
 //        fft = require('fft-js').fft,
 //        fftUtil = require('fft-js').util;

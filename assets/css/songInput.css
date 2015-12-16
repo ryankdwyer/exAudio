@@ -1,8 +1,0 @@
-#song-input {
-    width: 0.1px !important;
-    height: 0.1px !important;
-    opacity: 0 !important;
-    overflow: hidden !important;
-    position: absolute !important;
-    z-index: -1 !important;
-}

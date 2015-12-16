@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/lokijs/src/loki-angular.js"></script>
+    <script src="node_modules/lokijs/src/loki-angular.js"></script>
+    <script src="node_modules/lokijs/src/lokijs.js"></script>
+    <script src="node_modules/lokijs/src/lokijs.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/components/findSimilar/findSimilar.controller.js"></script>
+    <script src="app/components/findSimilar/findSimilar.js"></script>
+    <script src="app/components/player/player.service.js"></script>
+    <script src="app/db/storage.service.js"></script>
+    <script src="app/db/storage.controller.js"></script>
+
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/7.0.4/basscss.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <title>ExAudio</title>
+</head>
+
+<body ng-app="exaudio" class="bg-black">
+    <find-similar></find-similar>
+<script>
+    fs = require('fs'),
+            loki = require('lokijs'),
+            path = require('path'),
+            ipc = require('electron').ipcRenderer;
+</script>
+</body>
+</html>

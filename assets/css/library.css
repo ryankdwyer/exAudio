@@ -1,53 +1,9 @@
-#library {
-    width: 100%;
-    margin-top: 60px;
-    display: block;
+.songRow:hover {
+    background-color: darkgray;
 }
-#library-body {
-    position:absolute;
-    height: 80%;
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: block;
-    margin: 0 !important;
-}
-
-.songRow {
-    font-size: 1.1em;
-    height: 30px;
-    border-bottom: 1px solid lightgray;
-    padding-top: 5px;
-    margin: 0 !important;
-}
-
-.songRow div {
-    overflow-x: auto;
-    white-space: nowrap;
-}
-
 #libraryHeader {
-    font-size: 1.3em;
     border-bottom: 2px solid greenyellow;
-    padding-bottom: 5px;
 }
 .playing {
-    background-color: #A8A8A8;
-}
-.playButtonCell {
-    width: 50px;
-    text-align: center;
-}
-
-.deleteButtonCell {
-    width: 75px;
-    text-align: center;
-}
-
-.trackCell {
-    text-align: center;
-}
-
-.durationCell {
-    text-align: center;
+    background-color: darkgray;
 }

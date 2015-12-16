@@ -1,11 +1,23 @@
 'use strict';
-var app = require('app');  // Module to control application life.
-var BrowserWindow = require('browser-window');  // Module to create native browser window.
-var ipc = require('ipc');
-require('crash-reporter').start();
+var app = require('app');
+var BrowserWindow = require('browser-window');
+var ipc = require('electron').ipcMain;
+var crashReporter = require('electron').crashReporter
+
+crashReporter.start({
+  productName: 'MyAppName',
+  companyName: 'MyCompanyName',
+  submitURL: 'http://localhost:3000/',
+  autoSubmit: true
+});
+
+crashReporter.getLastCrashReport();
+
+//require('electron-reload')(__dirname);
 
 var mainWindow = null;
-var insertWindow = null;
+var uploaderWindow = null;
+var findSimilarWindow = null;
 
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -16,7 +28,7 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   mainWindow = new BrowserWindow({width: 1000, height: 720});
 
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
 
 
   mainWindow.on('closed', function() {
@@ -24,25 +36,41 @@ app.on('ready', function() {
   });
 });
 
-function createInsertWindow() {
-  insertWindow = new BrowserWindow({
+function openUploader() {
+  uploaderWindow = new BrowserWindow({
     width: 320,
     height: 240,
     show: false
   });
 
-  insertWindow.loadUrl('file://' + __dirname + '/addSongs.html');
+  uploaderWindow.loadURL('file://' + __dirname + '/addSongs.html');
+  uploaderWindow.show();
+  uploaderWindow.on('closed',function() {
+    uploaderWindow = null;
+  });
+}
 
-  insertWindow.on('closed',function() {
-    insertWindow = null;
+function openFindSimilar ()  {
+  findSimilarWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    show: false
+  });
+
+  findSimilarWindow.loadURL(`file://${__dirname}/findSimilar.html`);
+  findSimilarWindow.show();
+
+  findSimilarWindow.on('closed', function () {
+    findSimilarWindow = null;
   });
 }
 
 ipc.on('open-add-songs', function() {
-  if(!insertWindow) {
-    createInsertWindow();
-  }
-  return (!insertWindow.isClosed() && insertWindow.isVisible()) ? insertWindow.hide() : insertWindow.show();
+    openUploader();
+});
+
+ipc.on('find-similar', function(event, PlayerService) {
+  openFindSimilar();
 });
 
 ipc.on('newSongsAdded', function (event, songs) {
