@@ -13,10 +13,11 @@ crashReporter.start({
 
 crashReporter.getLastCrashReport();
 
-require('electron-reload')(__dirname);
+//require('electron-reload')(__dirname);
 
 var mainWindow = null;
-var insertWindow = null;
+var uploaderWindow = null;
+var findSimilarWindow = null;
 
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -35,22 +36,41 @@ app.on('ready', function() {
   });
 });
 
-function createInsertWindow() {
-  insertWindow = new BrowserWindow({
+function openUploader() {
+  uploaderWindow = new BrowserWindow({
     width: 320,
     height: 240,
     show: false
   });
 
-  insertWindow.loadURL('file://' + __dirname + '/addSongs.html');
-  insertWindow.show();
-  insertWindow.on('closed',function() {
-    insertWindow = null;
+  uploaderWindow.loadURL('file://' + __dirname + '/addSongs.html');
+  uploaderWindow.show();
+  uploaderWindow.on('closed',function() {
+    uploaderWindow = null;
+  });
+}
+
+function openFindSimilar ()  {
+  findSimilarWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    show: false
+  });
+
+  findSimilarWindow.loadURL(`file://${__dirname}/findSimilar.html`);
+  findSimilarWindow.show();
+
+  findSimilarWindow.on('closed', function () {
+    findSimilarWindow = null;
   });
 }
 
 ipc.on('open-add-songs', function() {
-    createInsertWindow();
+    openUploader();
+});
+
+ipc.on('find-similar', function(event, PlayerService) {
+  openFindSimilar();
 });
 
 ipc.on('newSongsAdded', function (event, songs) {

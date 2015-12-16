@@ -1,27 +1,7 @@
-#library {
-    width: 100%;
-}
-#library-body {
-    min-height: 0;
-    width: 100%;
-    overflow-y: scroll;
-}
-
-.songRow {
-    border-bottom: 1px solid lightgrey;
-}
-
-.songRow div {
-    overflow-x: auto;
-    white-space: nowrap;
-}
-
 .songRow:hover {
     background-color: darkgray;
 }
-
 #libraryHeader {
-    font-size: 1.3em;
     border-bottom: 2px solid greenyellow;
 }
 .playing {

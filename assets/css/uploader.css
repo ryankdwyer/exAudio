@@ -5,8 +5,8 @@
     text-align: center;
     padding: 1em 0;
     margin: 1em 0;
-    color: lightgray;
-    border: 2px dashed lightgray;
+    color: black;
+    border: 2px dashed black;
     cursor: default;
 }
 
@@ -31,9 +31,8 @@
     text-align: center;
     padding: 5px;
     font-weight: 700;
-    color: white;
     display: inline-block;
-    border: 1px solid white;
+    border: 1px solid black;
     cursor: pointer;
 }
 

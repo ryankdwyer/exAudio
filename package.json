@@ -13,6 +13,7 @@
     "angular": "^1.4.8",
     "angular-ui-grid": "^3.0.7",
     "basscss": "^7.0.4",
+    "basscss-input-range": "^1.1.5",
     "bootstrap": "^4.0.0-alpha.2",
     "connect-multiparty": "^2.0.0",
     "d3": "^3.5.10",
