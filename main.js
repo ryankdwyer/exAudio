@@ -69,8 +69,11 @@ ipc.on('open-add-songs', function() {
     openUploader();
 });
 
-ipc.on('find-similar', function(event, PlayerService) {
+ipc.on('find-similar', function(event, songMetadata) {
   openFindSimilar();
+  findSimilarWindow.on('focus', function () {
+    findSimilarWindow.webContents.send('songMetadata', songMetadata)
+  })
 });
 
 ipc.on('newSongsAdded', function (event, songs) {

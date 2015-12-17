@@ -1,1 +1,13 @@
-<div class="white">{{player}}</div>
+<button class="btn btn-outline white" ng-click="getSimilarArtists(song)">Get Similar</button>
+
+<div class="clearfix white border-bottom" ng-repeat="artist in similar">
+    <div class="col col-2  mx-auto border-bottom">
+        <img src={{artist.images[0].url}} height="100px" width="100px">
+    </div>
+    <div class="col col-2 border-bottom">
+        {{artist.name}}
+    </div>
+    <div class="col col-4 border-bottom">
+        <a href={{artist.urls.lastfm_url}}>Last FM</a>
+    </div>
+</div>
