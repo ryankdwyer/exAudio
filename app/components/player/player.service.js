@@ -28,6 +28,11 @@ app.factory('PlayerService', function (Storage, $rootScope) {
                     //self.filter = self.player.device.device.context.createBiquadFilter();
                     //self.filter.connect(self.player.device.device.context.destination);
                 });
+                $rootScope.$on('keypress' , function (event, keyCode) {
+                    if (keyCode === 32) {
+                        self.player.togglePlayback();
+                    }
+                });
                 self.player.play();
             });
         },
