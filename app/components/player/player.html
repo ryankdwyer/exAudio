@@ -1,17 +1,15 @@
 <footer class="bg-black">
     <div class="clearfix bg-black fixed bottom-0 left-0 right-0 p2" id="player">
-        <div class="col col-2 center mb1 white">
-            <i class="fa fa-backward fa-2x" ng-click="Player.previous(Player.player)"></i>
-            <i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play fa-2x"
+        <div class="col col-1 left mb1 white">
+            <i class="fa fa-backward fa-lg" ng-click="Player.previous(Player.player)"></i>
+            <i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play fa-lg"
                ng-click="Player.play(Player.player)"></i>
-            <i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause fa-2x"
+            <i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause fa-lg"
                ng-click="Player.pause(Player.player)"></i>
-            <i class="fa fa-forward fa-2x" ng-click="Player.next(Player.player)"></i>
+            <i class="fa fa-forward fa-lg" ng-click="Player.next(Player.player)"></i>
         </div>
-        <div class="col col-2 center mb1 white">
-            <marquee>
+        <div class="col col-3 left truncate mb1 white">
                 <span>{{currentSong}}</span>
-            </marquee>
         </div>
         <div class="col col-1 center mb1 white">
             <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>
@@ -23,7 +21,7 @@
                    type="range"
                    min="0"
                    max="{{totalTime}}"
-                   value="0"
+                   value=0
                    tabindex="0"
                    ng-model="seekTime"
                    ng-change="seekTo(seekTime)"/>
@@ -33,9 +31,16 @@
             <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
         </div>
         <div class="col col-1 left m0 white">
-            <input id="volume" class="inline full-width range-light" type="range"
-                   min="0" max="100" value="{{100 || Player.player.volume}}" tabindex="0" ng-model="volume"
-                   ng-change="changeVolume(volume)"/>
+            <div class="clearfix">
+                <div class="col col-3 left">
+                    <i class="fa fa-volume-up"></i>
+                </div>
+                <div class="col col-9 right">
+                    <input id="volume" class="inline full-width range-light" type="range"
+                           min="0" max="100" value="{{100 || Player.player.volume}}" tabindex="0" ng-model="volume"
+                           ng-change="changeVolume(volume)"/>
+                </div>
+            </div>
         </div>
     </div>
 </footer>
