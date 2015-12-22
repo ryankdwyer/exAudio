@@ -1,5 +1,14 @@
-app.controller('FindSimilarCtrl', function ($scope, PlayerService) {
-    ipc.on('player', function (player) {
-        $scope.player = PlayerService.player;
-    })
+app.controller('FindSimilarCtrl', function ($scope, echoNestFactory) {
+    ipc.on('songMetadata', function (event, songMetadata) {
+        $scope.song = songMetadata;
+        $scope.$apply();
+    });
+
+    $scope.getSimilarArtists = function (songData) {
+        echoNestFactory.getSimilarArtist(songData)
+        .then(function(similarArtists) {
+            $scope.similar = similarArtists.data.response.artists;
+            console.log($scope.similar);
+        })
+    }
 });

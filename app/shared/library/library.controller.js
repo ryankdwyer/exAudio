@@ -5,7 +5,7 @@ app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerServi
 
     Storage.init();
 
-    ipc.on('newSongsAdded', function (songs) {
+    ipc.on('newSongsAdded', function (event, songs) {
         $scope.$apply($scope.songs = $scope.songs.concat(songs));
     });
 

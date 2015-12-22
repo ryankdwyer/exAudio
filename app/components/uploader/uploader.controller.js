@@ -1,6 +1,7 @@
 app.controller('UploaderCtrl', function ($scope, Storage, $rootScope ) {
     var songInput = $id('song-input');
     var fileDrag = $id('file-drag');
+    $scope.loading = false;
 
     Storage.init();
 
@@ -8,7 +9,6 @@ app.controller('UploaderCtrl', function ($scope, Storage, $rootScope ) {
     filedrag.addEventListener("dragover", fileDragHover, false);
     filedrag.addEventListener("dragleave", fileDragHover, false);
     filedrag.addEventListener("drop", fileSelectHandler, false);
-    //filedrag.style.display = "block";
 
     function $id(id) {
         return document.getElementById(id);
@@ -21,6 +21,7 @@ app.controller('UploaderCtrl', function ($scope, Storage, $rootScope ) {
     }
 
     function fileSelectHandler (e) {
+        $scope.loading = true;
         fileDragHover(e);
         var files = e.target.files || e.dataTransfer.files;
         var songsToAdd = [];
@@ -33,7 +34,7 @@ app.controller('UploaderCtrl', function ($scope, Storage, $rootScope ) {
             Storage.addSongs(songs)
             .then(function(collection) {
                 ipc.send('newSongsAdded', songs);
-                ipc.send('open-add-songs');
+                $scope.loading = false;
             });
         })
     }

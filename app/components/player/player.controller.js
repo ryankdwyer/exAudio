@@ -11,7 +11,6 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeo
     }
 
     $rootScope.$on('songStarted', function (event, playerObj) {
-        console.log(playerObj);
     	var song = (playerObj.asset.metadata.artist || playerObj.metadata.albumArtist) + ' - ' + (playerObj.asset.metadata.title || '');
         $scope.totalTime = playerObj.duration;
     	$scope.currentSong = song;

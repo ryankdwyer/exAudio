@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<html>
+<html play-pause>
 
 <head>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -21,6 +21,7 @@
     <script src="app/components/uploader/uploader.controller.js"></script>
     <script src="app/components/player/player.controller.js"></script>
     <script src="app/components/player/player.service.js"></script>
+    <script src="app/components/player/spacebar.directive.js"></script>
     <script src="app/components/player/player.js"></script>
     <script src="app/components/visualizer/visualizer.js"></script>
     <script src="app/components/visualizer/visualizer.controller.js"></script>
@@ -41,7 +42,7 @@
     <title>ExAudio</title>
 </head>
 
-<body ng-app="exaudio" class="bg-black">
+<body ng-app="exaudio" class="bg-black" play-pause>
         <div class="flex flex-column" style="min-height: 100vh">
             <div>
                 <header></header>

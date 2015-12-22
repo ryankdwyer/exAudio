@@ -3,7 +3,6 @@ input[type=range]{
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-    width: 300px;
     height: 5px;
     background: #ddd;
     border: none;
@@ -26,4 +25,13 @@ input[type=range]:focus {
 
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #ccc;
+}
+
+#songDuration {
+    width: 100%;
+    margin: 0;
+}
+
+#volume {
+    width: 100%;
 }

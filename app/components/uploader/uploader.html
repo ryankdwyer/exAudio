@@ -1,5 +1,11 @@
-<form>
-    <label for="song-input" id="input-label">Browse for songs</label>
-    <input type="file" class="field" id="song-input" multiple>
-</form>
-<div id="filedrag">or drop files here</div>
+<div ng-hide={{loading}}>
+    <form>
+        <label for="song-input" id="input-label">Browse for songs</label>
+        <input type="file" class="field" id="song-input" multiple>
+    </form>
+    <div id="filedrag">or drop files here</div>
+</div>
+
+<div ng-show={{loading}}>
+    <img src="https://d13yacurqjgara.cloudfront.net/users/31664/screenshots/1327315/plan-b-4-ram_1.gif">
+</div>

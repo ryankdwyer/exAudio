@@ -4,6 +4,6 @@ app.controller('HeaderCtrl', function ($scope, PlayerService) {
     };
 
     $scope.openFindSimilar = function () {
-        ipc.send('find-similar', PlayerService);
+        ipc.send('find-similar', PlayerService.player.metadata);
     };
 });
