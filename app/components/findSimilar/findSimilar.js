@@ -1,4 +1,4 @@
-app.directive('findSimilar', function () {
+app.directive('findSimilar', () => {
     return {
         restrict: 'E',
         templateUrl: './app/components/findSimilar/findSimilar.html',

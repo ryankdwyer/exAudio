@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('echoNestFactory', function ($http) {
+app.factory('echoNestFactory', ($http) => {
     return {
         baseUrl: 'http://developer.echonest.com/api/v4/',
         apiKey: '8YDC6AKKEKAWA7FLS',

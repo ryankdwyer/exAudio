@@ -1,12 +1,13 @@
-'use strict'
-app.factory('Storage', function ($rootScope) {
+'use strict';
+
+app.factory('Storage', ($rootScope) => {
 	return {
 		db: new loki(path.resolve(__dirname, 'app.db')),
 		collection: null,
 		loaded: false,
 		init: function () {
 			var self = this;
-			self.db.loadDatabase({}, function () {
+			self.db.loadDatabase({}, () => {
 				return new Promise(function (resolve, reject) {
 					if (self.db.collections.length) {
 						self.collection = self.db.getCollection('songs');
@@ -28,7 +29,7 @@ app.factory('Storage', function ($rootScope) {
 					})
 			})
 		},
-		addSongs: function(songs) {
+		addSongs: (songs) => {
 			var self = this;
 			return new Promise(function(resolve, reject) {
 				if (self.loaded && self.db.getCollection('songs')) {

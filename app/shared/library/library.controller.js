@@ -1,4 +1,4 @@
-app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerService, $timeout) {
+app.controller('LibraryCtrl', ($scope, Storage, $rootScope, PlayerService, $timeout) => {
     $scope.sortType = 'artist';
     $scope.sortReverse = false;
     $scope.selectedIndex = -1;
@@ -9,20 +9,20 @@ app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerServi
         $scope.$apply($scope.songs = $scope.songs.concat(songs));
     });
 
-    $scope.removeSong = function(lokiId, $index) {
+    $scope.removeSong = (lokiId, $index) => {
         Storage.collection.remove(lokiId);
         Storage.db.saveDatabase();
     };
 
-    $scope.playSong = function (song, idx) {
+    $scope.playSong = (song, idx) => {
         PlayerService.playSong(song, idx);
     };
 
-    $scope.selectedSong = function (idx) {
+    $scope.selectedSong = (idx) => {
         $scope.selectedIndex = idx;
     };
 
-    $scope.orderChange = function () {
+    $scope.orderChange = () => {
         $timeout(function () {
             var song = Storage.orderedSongs[PlayerService.player.idx];
             Storage.orderedSongs = $scope.orderedSongs;
@@ -30,17 +30,18 @@ app.controller('LibraryCtrl', function ($scope, Storage, $rootScope, PlayerServi
         }, 100);
     };
 
-    $rootScope.$on('dbLoaded', function() {
+    $rootScope.$on('dbLoaded', () => {
         $scope.$apply($scope.songs = Storage.collection.data);
         Storage.orderedSongs = $scope.orderedSongs;
     });
 
-    $rootScope.$on('newSongsAdded', function (event) {
+    $rootScope.$on('newSongsAdded', (event) => {
         $scope.$apply($scope.songs = Storage.collection.data);
     });
 
     // Replace with lodash
-    var matchLokiId = function (lokiId) {
+    var matchLokiId = (lokiId) => {
+        //return _.findIndex(Storage.orderedSongs, {$loki: lokiId});
         for (var i = 0; i < Storage.orderedSongs.length; i++) {
             if (lokiId === Storage.orderedSongs[i].$loki) {
                 return i;

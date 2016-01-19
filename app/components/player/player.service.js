@@ -1,4 +1,4 @@
-app.factory('PlayerService', function (Storage, $rootScope) {
+app.factory('PlayerService', function(Storage, $rootScope){
     return {
         player: 'test',
         playing: false,
@@ -25,8 +25,6 @@ app.factory('PlayerService', function (Storage, $rootScope) {
                     self.updateDuration(song,self.player);
                     $rootScope.$emit('songStarted', self.player);
                     self.playing = true;
-                    //self.filter = self.player.device.device.context.createBiquadFilter();
-                    //self.filter.connect(self.player.device.device.context.destination);
                 });
                 $rootScope.$on('keypress' , function (event, keyCode) {
                     if (keyCode === 32) {
@@ -36,45 +34,43 @@ app.factory('PlayerService', function (Storage, $rootScope) {
                 self.player.play();
             });
         },
-        getPlayerStatus: function (player) {
-            return player.playing;
-        },
-        play: function (player) {
+        getPlayerStatus: (player) => player.playing,
+        play: (player) => {
             if(player !== 'test') {
                 player.play();
             }
         },
-        pause: function (player) {
+        pause: (player) => {
             if(player !== 'test') {
                 player.pause();
             }
         },
-        stop: function (player) {
+        stop: (player) => {
             if(player !== 'test') {
                 player.stop();
             }
         },
-        next: function (player) {
-            if(player !== 'test') {
-                var nextSongIdx = player.idx + 1;
+        next: (player) => {
+            if(player.player !== 'test') {
+                var nextSongIdx = player.player.idx + 1;
                 if (nextSongIdx >= Storage.collection.data.length) return false;
                 else {
                     var nextSong = Storage.orderedSongs[nextSongIdx];
-                    this.playSong(nextSong, nextSongIdx);
+                    player.playSong(nextSong, nextSongIdx);
                 }
             }
         },
-        previous: function (player) {
-            if(player !== 'test') {
-                var prevSongIdx = player.idx - 1;
+        previous: (player) => {
+            if(player.player !== 'test') {
+                var prevSongIdx = player.player.idx - 1;
                 if (prevSongIdx < 0) return false;
                 else {
                     var nextSong = Storage.orderedSongs[prevSongIdx];
-                    this.playSong(nextSong, prevSongIdx);
+                    player.playSong(nextSong, prevSongIdx);
                 }
             }
         },
-        updateDuration: function (song, player) {
+        updateDuration: (song, player) => {
             if (song.duration !== 0) return false;
             song.duration = player.duration / 1000;
             Storage.collection.update(song);

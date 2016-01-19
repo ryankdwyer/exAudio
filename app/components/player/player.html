@@ -1,12 +1,12 @@
 <footer class="bg-black">
     <div class="clearfix bg-black fixed bottom-0 left-0 right-0 p2" id="player">
         <div class="col col-1 left mb1 white">
-            <i class="fa fa-backward fa-lg" ng-click="Player.previous(Player.player)"></i>
+            <i class="fa fa-backward fa-lg" ng-click="Player.previous(Player)"></i>
             <i ng-hide="Player.getPlayerStatus(Player.player)" class="fa fa-play fa-lg"
                ng-click="Player.play(Player.player)"></i>
             <i ng-show="Player.getPlayerStatus(Player.player)" class="fa fa-pause fa-lg"
                ng-click="Player.pause(Player.player)"></i>
-            <i class="fa fa-forward fa-lg" ng-click="Player.next(Player.player)"></i>
+            <i class="fa fa-forward fa-lg" ng-click="Player.next(Player)"></i>
         </div>
         <div class="col col-3 left truncate mb1 white">
                 <span>{{currentSong}}</span>

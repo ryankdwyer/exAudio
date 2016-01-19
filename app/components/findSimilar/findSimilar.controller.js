@@ -8,7 +8,6 @@ app.controller('FindSimilarCtrl', function ($scope, echoNestFactory) {
         echoNestFactory.getSimilarArtist(songData)
         .then(function(similarArtists) {
             $scope.similar = similarArtists.data.response.artists;
-            console.log($scope.similar);
         })
     }
 });

@@ -1,4 +1,4 @@
-app.controller('UploaderCtrl', function ($scope, Storage, $rootScope ) {
+app.controller('UploaderCtrl', ($scope, Storage, $rootScope ) => {
     var songInput = $id('song-input');
     var fileDrag = $id('file-drag');
     $scope.loading = false;

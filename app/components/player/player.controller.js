@@ -17,20 +17,12 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeo
     });
 
     $rootScope.$on('durationChange', function (event, elapsed) {
-    	$scope.$apply($scope.duration = elapsed);
+    	$scope.duration = elapsed;
         progressBar.value = elapsed;
+        $scope.$apply();
     });
 
     $scope.changeVolume = function (value) {
         $scope.Player.player.volume = value;
     };
-
-    //$scope.seekTo = function (value) {
-    //    //$scope.Player.player.pause();
-    //    $timeout(function () {
-    //        $scope.Player.player.device.seek(value/1000);
-    //        console.log($scope.Player.player.device);
-    //        //$scope.Player.player.play();
-    //    }, 500)
-    //}
 });
