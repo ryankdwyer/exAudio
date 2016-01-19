@@ -15,7 +15,7 @@
             <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>
             <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
         </div>
-        <div class="col col-4 center m0 white">
+        <div class="col col-4 center white">
             <input id="songDuration"
                    class="inline full-width range-light"
                    type="range"
@@ -30,10 +30,10 @@
             <div ng-if="Player.player!=='test'">{{totalTime | date: 'mm:ss'}}</div>
             <div ng-if="Player.player=='test'">{{0 | date: 'mm:ss'}}</div>
         </div>
-        <div class="col col-1 right m0 white">
+        <div class="col col-2 right m0 white">
             <div class="clearfix">
-                <div class="col col-3 left">
-                    <i class="fa fa-volume-up"></i>
+                <div class="col col-3 right">
+                    <i class="fa fa-volume-up">Vol</i>
                 </div>
                 <div class="col col-9 right">
                     <input id="volume" class="inline full-width range-light" type="range"

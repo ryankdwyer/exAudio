@@ -30,8 +30,12 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 #songDuration {
     width: 100%;
     margin: 0;
+    padding-bottom: 3px;
+    background-color: black;
 }
 
 #volume {
     width: 100%;
+    padding-bottom: 3px;
+    background-color: black;
 }
