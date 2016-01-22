@@ -1,4 +1,5 @@
 app.factory('PlayerService', function(Storage, $rootScope){
+    // refactor as an ES6 Class
     return {
         player: 'test',
         playing: false,

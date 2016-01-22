@@ -58,7 +58,10 @@
 				</div>
 			</div>
 			<div  id="library-body" class="block bg-black">
-				<div class="songRow clearfix border-bottom" ng-class='{playing: $index == Player.player.idx}' ng-repeat="song in (orderedSongs = (songs | orderBy:sortType:sortReverse | filter:searchSong)) track by $index" ng-dblclick="playSong(song, $index); selectedSong($index)">
+				<div class="songRow clearfix border-bottom"
+					 ng-class='{playing: $index == Player.player.idx}'
+					 ng-repeat="song in (orderedSongs = (songs | orderBy:sortType:sortReverse | filter:searchSong)) track by $index"
+					 ng-dblclick="playSong(song, $index); selectedSong($index)">
 					<div class="col col-1 playButtonCell center bg-lighten-2 silver">
 							<i ng-hide="$index == Player.player.idx && Player.getPlayerStatus(Player.player)" class="fa fa-play" ng-click="playSong(song, $index); selectedSong($index)"></i>
 							<i ng-show="$index == Player.player.idx && Player.getPlayerStatus(Player.player)" class="fa fa-pause" ng-click="Player.pause(Player.player)"></i>

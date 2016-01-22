@@ -1,11 +1,17 @@
-<div ng-hide={{loading}}>
-    <form>
-        <label for="song-input" id="input-label">Browse for songs</label>
-        <input type="file" class="field" id="song-input" multiple>
-    </form>
-    <div id="filedrag">or drop files here</div>
-</div>
-
-<div ng-show={{loading}}>
-    <img src="https://d13yacurqjgara.cloudfront.net/users/31664/screenshots/1327315/plan-b-4-ram_1.gif">
+<div class="container">
+    <div ng-hide="loading" class="white mt2 px3 border rounded">
+        <div id="browse-button" class="bg-lighten-2">
+            <form>
+                <label for="song-input" id="input-label" class="border white rounded thin">Browse for songs</label>
+                <input type="file" class="field white" id="song-input" multiple>
+            </form>
+        </div>
+        <div class="center mt1 mb1"><span>- OR -</span></div>
+        <div id="filedrag" class="white align-middle mx-auto rounded center bg-lighten-2">
+            <div class="mt2 py1">Drag your <i class="fa fa-music white"></i> here.</div>
+        </div>
+    </div>
+    <div ng-show="loading" class="white">
+        <img src="https://d13yacurqjgara.cloudfront.net/users/31664/screenshots/1327315/plan-b-4-ram_1.gif">
+    </div>
 </div>

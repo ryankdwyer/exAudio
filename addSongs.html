@@ -11,20 +11,23 @@
     <script src="app/components/uploader/uploader.controller.js"></script>
 
     <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/7.0.4/basscss.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/uploader.css">
 
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body ng-app="exaudio">
-<uploader></uploader>
-<script>
-    var mm = require('musicmetadata'),
-        fs = require('fs'),
-        loki = require('lokijs'),
-        path = require('path'),
-        ipc = require('electron').ipcRenderer;
-</script>
+<body ng-app="exaudio" class="bg-black">
+    <div class="container">
+        <uploader></uploader>
+    </div>
+    <script>
+        var mm = require('musicmetadata'),
+            fs = require('fs'),
+            loki = require('lokijs'),
+            path = require('path'),
+            ipc = require('electron').ipcRenderer;
+    </script>
 </body>
 </html>

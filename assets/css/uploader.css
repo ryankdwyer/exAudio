@@ -1,12 +1,8 @@
 #filedrag {
     display: block;
     height: 75px;
-    font-weight: bold;
-    text-align: center;
-    padding: 1em 0;
-    margin: 1em 0;
-    color: black;
-    border: 2px dashed black;
+    /*color: black;*/
+    border: 2px dashed white;
     cursor: default;
 }
 
@@ -38,6 +34,10 @@
 
 #input-label:focus,
 #input-label:hover {
-    background-color: white;
+    /*background-color: white;*/
     color: greenyellow;
+}
+
+#browse-button {
+    border: 1px solid white;
 }

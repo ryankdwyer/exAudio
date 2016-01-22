@@ -9,7 +9,8 @@
             <i class="fa fa-forward fa-lg" ng-click="Player.next(Player)"></i>
         </div>
         <div class="col col-3 left truncate mb1 white">
-                <span>{{currentSong}}</span>
+            <span ng-if="currentSong !== 'test'">{{currentSong}}</span>
+            <span ng-if="currentSong == 'test'">Play a song!</span>
         </div>
         <div class="col col-1 center mb1 white">
             <div ng-if="Player.player!=='test'">{{duration | date: 'mm:ss'}}</div>
