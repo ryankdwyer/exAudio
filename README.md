@@ -1,7 +1,10 @@
 # exAudio
 
-A cross platform audio player built in Electron. I have a large collection of lossless audio files, mostly in flac. I was unsatisfied with the current options available, so I built my own. exAudio is capable of storing and playing a library of various audio files in an array of codecs, including:
+A cross platform audio player built in Electron. exAudio is capable of storing and playing a library of various audio files in an array of codecs. I have a large collection of lossless audio files, mostly in FLAC. I was unsatisfied with the current audio player options available, so I built my own. 
 
+I am currently working on implementing a recommendation engine that will suggest new music based on your listening habits. This will leverage the echoNest API, the same information used in Spotify's recommendation engine. 
+
+##Supported Codecs:
 1. flac
 2. alac
 3. aac 
@@ -10,7 +13,6 @@ A cross platform audio player built in Electron. I have a large collection of lo
 6. more are coming!
 
 ##Technologies/Libraries used:
-
 1. Electron
 2. AngularJS
 3. aurorajs
@@ -19,5 +21,3 @@ A cross platform audio player built in Electron. I have a large collection of lo
 6. aac.js
 7. alac.js
 8. lokijs
-9. d3
-10. fft-js
