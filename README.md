@@ -21,3 +21,13 @@ I am currently working on implementing a recommendation engine that will suggest
 6. aac.js
 7. alac.js
 8. lokijs
+
+##To Get Started:
+1. ```git clone``` this repository to your local machine
+2. ```npm install``` in the repository's directory
+3. ```npm start``` will launch the development version of the application
+
+##To package the application for Mac OSX
+1. Open your terminal and navigate to the root of the exAudio project
+2. Run the following command from your terminal: ```sh package-app-mac.sh```
+3. The packaged app should appear in a directory called ```exAudio-darwin-x64``` in the root of your project
