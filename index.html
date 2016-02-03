@@ -3,12 +3,8 @@
 <html play-pause>
 
 <head>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/lokijs/src/loki-angular.js"></script>
-    <script src="node_modules/lokijs/src/loki-angular.js"></script>
-    <script src="node_modules/lokijs/src/lokijs.js"></script>
-    <script src="node_modules/lokijs/src/lokijs.js"></script>
     <script src="app/app.js"></script>
     <script src="app/db/storage.service.js"></script>
     <script src="app/shared/header/header.directive.js"></script>
@@ -16,6 +12,7 @@
     <script src="app/shared/library/library.controller.js"></script>
     <script src="app/shared/library/library.directive.js"></script>
     <script src="app/shared/search/search.directive.js"></script>
+    <script src="app/shared/setClassAtTop/setClassAtTop.js"></script>
     <script src="app/components/uploader/uploader.directive.js"></script>
     <script src="app/components/uploader/uploader.controller.js"></script>
     <script src="app/components/player/player.controller.js"></script>
@@ -33,9 +30,8 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/library.css">
     <link rel="stylesheet" href="assets/css/player.css">
-
-    <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/7.0.4/basscss.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/basscss/css/basscss.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 
     <title>ExAudio</title>
 </head>
@@ -58,7 +54,6 @@
         loki = require('lokijs'),
         path = require('path'),
         ipc = require('electron').ipcRenderer;
-        _ = require('lodash');
     </script>
 </body>
 
