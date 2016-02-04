@@ -39,7 +39,7 @@ app.controller('LibraryCtrl', ($scope, Storage, $rootScope, PlayerService, $time
         $scope.$apply($scope.songs = Storage.collection.data);
     });
 
-    // Replace with lodash
+    // Replace with lodash`
     var matchLokiId = (lokiId) => {
         //return _.findIndex(Storage.orderedSongs, {$loki: lokiId});
         for (var i = 0; i < Storage.orderedSongs.length; i++) {
