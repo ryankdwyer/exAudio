@@ -5,3 +5,7 @@
 [ng-dblclick] {
     cursor: pointer;
 }
+
+.hide-element {
+    display: none;
+}
