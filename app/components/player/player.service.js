@@ -8,6 +8,7 @@ app.factory('PlayerService', function(Storage, $rootScope){
                 self.player.stop();
             }
             fs.readFile(song.path, function(err, songBuffer) {
+                if (err) alert(`That file does not exist. \nPlease pick another song.`);
                 self.player = AV.Player.fromBuffer(songBuffer);
                 self.player.idx = idx;
                 self.player.on('end', function () {
@@ -27,14 +28,12 @@ app.factory('PlayerService', function(Storage, $rootScope){
                     self.playing = true;
                 });
                 $rootScope.$on('keypress' , function (event, keyCode) {
-                    if (keyCode === 32) {
                         if (self.playing) {
                             self.pause(self.player);
                         } else {
                             self.play(self.player);
                         }
                         self.playing = !self.playing;
-                    }
                 });
                 self.player.play();
             });
