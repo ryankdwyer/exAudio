@@ -1,5 +1,4 @@
 app.factory('PlayerService', function(Storage, $rootScope){
-    // refactor as an ES6 Class
     return {
         player: 'test',
         playing: false,
@@ -29,7 +28,12 @@ app.factory('PlayerService', function(Storage, $rootScope){
                 });
                 $rootScope.$on('keypress' , function (event, keyCode) {
                     if (keyCode === 32) {
-                        self.player.togglePlayback();
+                        if (self.playing) {
+                            self.pause(self.player);
+                        } else {
+                            self.play(self.player);
+                        }
+                        self.playing = !self.playing;
                     }
                 });
                 self.player.play();

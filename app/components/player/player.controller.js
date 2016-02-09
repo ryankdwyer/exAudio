@@ -22,6 +22,10 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeo
         $scope.$apply();
     });
 
+    $rootScope.$on('keypress', function (event, keyCode) {
+        $scope.$apply();
+    });
+
     $scope.changeVolume = function (value) {
         $scope.Player.player.volume = value;
     };

@@ -4,9 +4,11 @@ app.directive('playPause', ($document, $rootScope) => {
         restrict: 'A',
         controller: ($scope) => {
             $document.bind('keypress', function (e) {
-                e.preventDefault();
-                $rootScope.$broadcast('keypress', e.which);
-                $rootScope.$broadcast('keypress:' + e.which, e);
+                if (e.which === 32) {
+                    e.preventDefault();
+                    $rootScope.$broadcast('keypress', e.which);
+                    $rootScope.$broadcast('keypress:' + e.which, e);
+                }
             })
         }
     }
