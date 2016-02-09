@@ -1,4 +1,5 @@
 app.controller('FindSimilarCtrl', function ($scope, echoNestFactory) {
+    ipc.send('sendSongMetadata');
     ipc.on('songMetadata', function (event, songMetadata) {
         $scope.song = songMetadata;
         $scope.$apply();
