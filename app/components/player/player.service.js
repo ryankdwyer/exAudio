@@ -3,6 +3,7 @@ app.factory('PlayerService', function(Storage, $rootScope){
         player: 'test',
         playing: false,
         shuffle: false,
+        shuffleOrder: [],
         playSong: function (song, idx) {
             var self = this;
             if (self.player !== 'test') {
@@ -52,12 +53,15 @@ app.factory('PlayerService', function(Storage, $rootScope){
             }
         },
         next: (player) => {
-            if(player.player !== 'test') {
-                var nextSongIdx = player.player.idx + 1;
-                if (nextSongIdx >= Storage.collection.data.length) return false;
-                else {
-                    var nextSong = Storage.orderedSongs[nextSongIdx];
-                    player.playSong(nextSong, nextSongIdx);
+            if(player.shuffle) player.shufflePlay(player);
+            else {
+                if(player.player !== 'test') {
+                    var nextSongIdx = player.player.idx + 1;
+                    if (nextSongIdx >= Storage.collection.data.length) return false;
+                    else {
+                        var nextSong = Storage.orderedSongs[nextSongIdx];
+                        player.playSong(nextSong, nextSongIdx);
+                    }
                 }
             }
         },
