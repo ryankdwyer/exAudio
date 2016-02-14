@@ -29,4 +29,11 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeo
     $scope.changeVolume = function (value) {
         $scope.Player.player.volume = value;
     };
+
+    $scope.toggleShuffle = function () {
+        $scope.Player.shuffle = !$scope.Player.shuffle;
+    };
+    function generateShuffleOrder () {
+
+    }
 });

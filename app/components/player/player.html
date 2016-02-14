@@ -34,9 +34,12 @@
         <div class="col col-2 right m0 white">
             <div class="clearfix">
                 <div class="col col-3 right">
+                    <i class="fa fa-random" ng-click="toggleShuffle()" ng-class="{lime: Player.shuffle}"></i>
+                </div>
+                <div class="col col-3 right">
                     <i class="fa fa-volume-up"></i>
                 </div>
-                <div class="col col-9 left">
+                <div class="col col-6 left">
                     <input id="volume" class="inline full-width range-light" type="range"
                            min="0" max="100" value="{{100 || Player.player.volume}}" tabindex="0" ng-model="volume"
                            ng-change="changeVolume(volume)"/>
