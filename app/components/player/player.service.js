@@ -12,6 +12,7 @@ app.factory('PlayerService', function(Storage, $rootScope){
             fs.readFile(song.path, function(err, songBuffer) {
                 if (err) alert(`That file does not exist. \nPlease pick another song.`);
                 self.player = AV.Player.fromBuffer(songBuffer);
+                console.log(self.player);
                 self.player.idx = idx;
                 self.player.on('end', function () {
                     if (self.shuffle === true) self.shufflePlay(self);
