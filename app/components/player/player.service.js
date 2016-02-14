@@ -2,6 +2,7 @@ app.factory('PlayerService', function(Storage, $rootScope){
     return {
         player: 'test',
         playing: false,
+        shuffle: false,
         playSong: function (song, idx) {
             var self = this;
             if (self.player !== 'test') {
@@ -12,12 +13,8 @@ app.factory('PlayerService', function(Storage, $rootScope){
                 self.player = AV.Player.fromBuffer(songBuffer);
                 self.player.idx = idx;
                 self.player.on('end', function () {
-                    var nextSongIdx = Storage.orderedSongs.indexOf(song) + 1;
-                    if (nextSongIdx >= Storage.collection.data.length) return false;
-                    else {
-                        var nextSong = Storage.orderedSongs[nextSongIdx];
-                        self.playSong(nextSong, nextSongIdx);
-                    }
+                    if (self.shuffle === true) self.shufflePlay(self);
+                    else self.next(self);
                 });
                 self.player.on('progress', function (duration) {
                     $rootScope.$emit('durationChange', duration);
@@ -79,6 +76,16 @@ app.factory('PlayerService', function(Storage, $rootScope){
             song.duration = player.duration / 1000;
             Storage.collection.update(song);
             Storage.db.saveDatabase();
+        },
+        shufflePlay: (player) => {
+            if(player.player !== 'test') {
+                var max = Storage.collection.data.length - 1;
+                var nextSongIdx = Math.floor(Math.random() * (max + 1));
+                var nextSong = Storage.orderedSongs[nextSongIdx];
+                player.playSong(nextSong, nextSongIdx);
+            }
         }
     }
+
+
 });

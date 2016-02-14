@@ -10,7 +10,6 @@ app.directive('setClassAtTop', ($window, $document) => {
             var spacer = angular.element(document.querySelector('#spacer'));
             $win.on('scroll', function (e) {
                 if ($win[0].pageYOffset >= offsetTop) {
-                    console.log('condition satisfied');
                     spacer.removeClass(hideElementClass);
                     element.removeClass('clearfix');
                     element.addClass(topClass);
