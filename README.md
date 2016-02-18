@@ -4,6 +4,8 @@ A cross platform audio player built in Electron. exAudio is capable of storing a
 
 I am currently working on implementing a recommendation engine that will suggest new music based on your listening habits. This will leverage the echoNest API, the same information used in Spotify's recommendation engine. 
 
+This is a work in progress, so expect a few bugs, and if you find one, let me know!
+
 ##Supported Codecs:
 1. flac
 2. alac
