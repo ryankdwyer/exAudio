@@ -1,4 +1,5 @@
 'use strict';
+// convert this to globalShortcut
 app.directive('playPause', ($document, $rootScope) => {
     return {
         restrict: 'A',

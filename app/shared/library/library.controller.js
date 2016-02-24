@@ -27,19 +27,19 @@ app.controller('LibraryCtrl', ($scope, Storage, $rootScope, PlayerService, $time
             var song = Storage.orderedSongs[PlayerService.player.idx];
             Storage.orderedSongs = $scope.orderedSongs;
             PlayerService.player.idx = matchLokiId(song.$loki);
-        }, 100);
+        }, 0);
     };
 
+    // convert to ipc
     $rootScope.$on('dbLoaded', () => {
         $scope.$apply($scope.songs = Storage.collection.data);
         Storage.orderedSongs = $scope.orderedSongs;
     });
-
+    // convert to ipc
     $rootScope.$on('newSongsAdded', (event) => {
         $scope.$apply($scope.songs = Storage.collection.data);
     });
 
-    // Replace with lodash`
     var matchLokiId = (lokiId) => {
         //return _.findIndex(Storage.orderedSongs, {$loki: lokiId});
         for (var i = 0; i < Storage.orderedSongs.length; i++) {

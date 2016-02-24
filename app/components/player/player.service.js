@@ -1,4 +1,5 @@
 app.factory('PlayerService', function(Storage, $rootScope){
+    // convert to service to remove event emission
     return {
         player: 'test',
         playing: false,
