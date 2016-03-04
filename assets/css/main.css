@@ -9,3 +9,7 @@
 .hide-element {
     display: none;
 }
+
+html {
+    font-size: 14px;
+}
