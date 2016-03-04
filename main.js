@@ -1,8 +1,10 @@
 'use strict';
-var app = require('app');
-var BrowserWindow = require('browser-window');
-var ipc = require('electron').ipcMain;
-var crashReporter = require('electron').crashReporter
+const electron = require('electron');
+const app = require('app');
+const BrowserWindow = require('browser-window');
+const ipc = electron.ipcMain;
+const crashReporter = electron.crashReporter;
+const globalShortcut = electron.globalShortcut;
 
 crashReporter.start({
   productName: 'MyAppName',
@@ -15,9 +17,9 @@ crashReporter.getLastCrashReport();
 
 //require('electron-reload')(__dirname);
 
-var mainWindow = null;
-var uploaderWindow = null;
-var findSimilarWindow = null;
+let mainWindow = null;
+let uploaderWindow = null;
+let findSimilarWindow = null;
 
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -26,6 +28,15 @@ app.on('window-all-closed', function() {
 });
 
 app.on('ready', function() {
+  // Register a 'ctrl+x' shortcut listener.
+  var ret = globalShortcut.register('ctrl+x', function() {
+    console.log('ctrl+x is pressed');
+  });
+
+  if (!ret) {
+    console.log('registration failed');
+  }
+
   mainWindow = new BrowserWindow({width: 1000, height: 720});
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');

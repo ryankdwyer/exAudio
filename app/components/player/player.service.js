@@ -1,7 +1,24 @@
+//app.service('PlayerService', function (Storage, $rootScope) {
+//  this.player = 'test';
+//  this.player = false;
+//  this.shuffle = false;
+//  this.shuffleOrder = [];
+//  this.playSong = (song, idx) => {
+//    let self = this;
+//    if (self.player !== 'test') {
+//      self.player.stop();
+//    }
+//    fs.readFile(song.path, function (err, songBuffer) {
+//      if(err) alert(`That file does not exist. Please pick another song.`);
+//      self.player = AV.Player.fromBuffer(songBuffer);
+//    })
+//  }
+//});
 app.factory('PlayerService', function (Storage, $rootScope) {
   // convert to service to remove event emission
+  console.log(AV);
   return {
-    player: 'test',
+    player: AV.Player,
     playing: false,
     shuffle: false,
     shuffleOrder: [],
@@ -12,7 +29,7 @@ app.factory('PlayerService', function (Storage, $rootScope) {
       }
       fs.readFile(song.path, function (err, songBuffer) {
         if (err) alert(`That file does not exist. \nPlease pick another song.`);
-        self.player = AV.Player.fromBuffer(songBuffer);
+        self.player.fromBuffer(songBuffer);
         self.player.idx = idx;
         self.player.on('end', function () {
           if (self.shuffle === true) self.shufflePlay(self);
