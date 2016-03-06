@@ -1,13 +1,20 @@
-<button class="btn btn-outline lime" ng-click="getSimilarArtists(song)">Get Similar</button>
-<hr>
-<div class="clearfix white border-bottom" ng-repeat="artist in similar">
-    <div class="col col-2  mx-auto border-bottom">
-        <img ng-src={{artist.images[0].url}} height="100px" width="100px">
+<div class="col col-3 clearfix silver bg-black px1 rounded">
+    <div class="col col-12 bg-lighten-2 px3" id="find-similar-header">
+        <div class="h4 center">
+            Find Similar
+        </div>
     </div>
-    <div class="col col-2 border-bottom">
-        {{artist.name}}
-    </div>
-    <div class="col col-4 border-bottom">
-        <a href={{artist.urls.lastfm_url}}>Last FM</a>
+    <div class="col col-12 bg-lighten-2 center ">
+        <button class="btn btn-outline lime" ng-click="getSimilarArtists(song)">Get Similar</button>
+        <div class="clearfix white border-bottom" ng-repeat="artist in similar">
+            <div class="col col-8 border-bottom truncate">
+                {{artist.name}}
+            </div>
+            <div class="col col-4 border-bottom">
+                <a href={{artist.urls.lastfm_url}}>Last FM</a>
+            </div>
+        </div>
     </div>
 </div>
+
+

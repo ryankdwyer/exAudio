@@ -1,14 +1,13 @@
-app.controller('FindSimilarCtrl', function ($scope, echoNestFactory) {
-    ipc.send('sendSongMetadata');
-    ipc.on('songMetadata', function (event, songMetadata) {
-        $scope.song = songMetadata;
-        $scope.$apply();
-    });
-
-    $scope.getSimilarArtists = function (songData) {
-        echoNestFactory.getSimilarArtist(songData)
-        .then(function(similarArtists) {
-            $scope.similar = similarArtists.data.response.artists;
+'use strict';
+app.controller('FindSimilarCtrl', function ($scope, echoNestFactory, PlayerService) {
+  $scope.getSimilarArtists = () => {
+    if (PlayerService.player !== 'test') {
+      let songData = PlayerService.getMetadata(PlayerService.player);
+      echoNestFactory.getSimilarArtist(songData)
+        .then(function (similarArtists) {
+          console.log(similarArtists);
+          $scope.similar = similarArtists.data.response.artists;
         })
     }
+  }
 });

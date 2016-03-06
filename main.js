@@ -51,27 +51,11 @@ function openUploader() {
   });
 }
 
-function openFindSimilar ()  {
-  findSimilarWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    show: false
-  });
-
-  findSimilarWindow.loadURL(`file://${__dirname}/findSimilar.html`);
-  findSimilarWindow.show();
-
-  findSimilarWindow.on('closed', function () {
-    findSimilarWindow = null;
-  });
-}
-
 ipc.on('open-add-songs', function() {
     openUploader();
 });
 
 ipc.on('find-similar', function(event, songMetadata) {
-  openFindSimilar();
   ipc.on('sendSongMetadata', function (event) {
     findSimilarWindow.webContents.send('songMetadata', songMetadata);
   });
