@@ -31,6 +31,10 @@ app.on('ready', function() {
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
+  mainWindow.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    require('shell').openExternal(url);
+  });
 
   mainWindow.on('closed', function() {
     mainWindow = null;
@@ -53,15 +57,6 @@ function openUploader() {
 
 ipc.on('open-add-songs', function() {
     openUploader();
-});
-
-ipc.on('find-similar', function(event, songMetadata) {
-  ipc.on('sendSongMetadata', function (event) {
-    findSimilarWindow.webContents.send('songMetadata', songMetadata);
-  });
-  findSimilarWindow.on('focus', function () {
-    findSimilarWindow.webContents.send('songMetadata', songMetadata)
-  })
 });
 
 ipc.on('newSongsAdded', function (event, songs) {
