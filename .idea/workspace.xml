@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2afbce6a-6de8-4ca7-848c-6a67cea38881" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/echoNest/echoNest.factory.js" afterPath="$PROJECT_DIR$/app/components/echoNest/echoNest.factory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/findSimilar/findSimilar.controller.js" afterPath="$PROJECT_DIR$/app/components/findSimilar/findSimilar.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/findSimilar/findSimilar.html" afterPath="$PROJECT_DIR$/app/components/findSimilar/findSimilar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
     </list>
     <ignored path="exAudioPlayer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,27 +28,27 @@
         <entry file="file://$PROJECT_DIR$/app/components/findSimilar/findSimilar.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+              <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="echoNest.factory.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="echoNest.factory.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/echoNest/echoNest.factory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1800948">
+            <state vertical-scroll-proportion="0.0">
               <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="findSimilar.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="findSimilar.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/components/findSimilar/findSimilar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.75">
-              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.48101267">
+              <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -123,9 +120,9 @@
         <option value="$PROJECT_DIR$/app/shared/header/header.html" />
         <option value="$PROJECT_DIR$/app/shared/library/library.html" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/app/components/echoNest/echoNest.factory.js" />
         <option value="$PROJECT_DIR$/app/components/findSimilar/findSimilar.controller.js" />
         <option value="$PROJECT_DIR$/app/components/findSimilar/findSimilar.html" />
-        <option value="$PROJECT_DIR$/app/components/echoNest/echoNest.factory.js" />
       </list>
     </option>
   </component>
@@ -911,10 +908,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/findSimilar/findSimilar.html">
+    <entry file="file://$PROJECT_DIR$/app/components/echoNest/echoNest.factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.75">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -922,15 +919,15 @@
     <entry file="file://$PROJECT_DIR$/app/components/findSimilar/findSimilar.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/echoNest/echoNest.factory.js">
+    <entry file="file://$PROJECT_DIR$/app/components/findSimilar/findSimilar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1800948">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.48101267">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
           <folding />
         </state>
       </provider>
