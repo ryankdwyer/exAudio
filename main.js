@@ -4,6 +4,7 @@ const app = require('app');
 const BrowserWindow = require('browser-window');
 const ipc = electron.ipcMain;
 const crashReporter = electron.crashReporter;
+const shell = require('shell');
 
 crashReporter.start({
   productName: 'exAudo',
@@ -33,7 +34,7 @@ app.on('ready', function() {
 
   mainWindow.webContents.on('new-window', function(e, url) {
     e.preventDefault();
-    require('shell').openExternal(url);
+    shell.openExternal(url);
   });
 
   mainWindow.on('closed', function() {
