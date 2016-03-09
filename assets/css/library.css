@@ -1,7 +1,7 @@
 .songRow:hover {
     background-color: darkgray;
 }
-#libraryHeader {
+#libraryHeader, #find-similar-header {
     border-bottom: 2px solid greenyellow;
 }
 .playing {

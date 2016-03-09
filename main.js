@@ -1,12 +1,13 @@
 'use strict';
-var app = require('app');
-var BrowserWindow = require('browser-window');
-var ipc = require('electron').ipcMain;
-var crashReporter = require('electron').crashReporter
+const electron = require('electron');
+const app = require('app');
+const BrowserWindow = require('browser-window');
+const ipc = electron.ipcMain;
+const crashReporter = electron.crashReporter;
 
 crashReporter.start({
-  productName: 'MyAppName',
-  companyName: 'MyCompanyName',
+  productName: 'exAudo',
+  companyName: '',
   submitURL: 'http://localhost:3000/',
   autoSubmit: true
 });
@@ -15,9 +16,9 @@ crashReporter.getLastCrashReport();
 
 //require('electron-reload')(__dirname);
 
-var mainWindow = null;
-var uploaderWindow = null;
-var findSimilarWindow = null;
+let mainWindow = null;
+let uploaderWindow = null;
+let findSimilarWindow = null;
 
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -30,6 +31,10 @@ app.on('ready', function() {
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
+  mainWindow.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    require('shell').openExternal(url);
+  });
 
   mainWindow.on('closed', function() {
     mainWindow = null;
@@ -50,33 +55,8 @@ function openUploader() {
   });
 }
 
-function openFindSimilar ()  {
-  findSimilarWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    show: false
-  });
-
-  findSimilarWindow.loadURL(`file://${__dirname}/findSimilar.html`);
-  findSimilarWindow.show();
-
-  findSimilarWindow.on('closed', function () {
-    findSimilarWindow = null;
-  });
-}
-
 ipc.on('open-add-songs', function() {
     openUploader();
-});
-
-ipc.on('find-similar', function(event, songMetadata) {
-  openFindSimilar();
-  ipc.on('sendSongMetadata', function (event) {
-    findSimilarWindow.webContents.send('songMetadata', songMetadata);
-  });
-  findSimilarWindow.on('focus', function () {
-    findSimilarWindow.webContents.send('songMetadata', songMetadata)
-  })
 });
 
 ipc.on('newSongsAdded', function (event, songs) {
