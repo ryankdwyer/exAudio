@@ -1,7 +1,6 @@
 <div class="clearfix relative">
-    <div class="bg-black col col-9">
         <div id="library" class="block z4">
-            <div class="clearfix silver bg-black" id="libraryHeader" set-class-at-top>
+            <div class="clearfix silver bg-black col col-9" id="libraryHeader" set-class-at-top>
                 <div class="col col-4 bg-lighten-2 px3">
                     <div ng-click="sortType='title'; sortReverse = !sortReverse; orderChange()">
                         <div class="h4">
@@ -53,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            <div class="clearfix silver hide-element" id="spacer">
+            <div class="clearfix silver hide-element col col-9" id="spacer">
                 <div class="col col-4 bg-lighten-2">
                     <div ng-click="sortType='title'; sortReverse = !sortReverse; orderChange()">
                         <div class="h4">
@@ -85,7 +84,7 @@
                     &nbsp;
                 </div>
             </div>
-            <div id="library-body" class="block bg-lighten-2">
+            <div id="library-body" class="block bg-lighten-2 col col-9">
                 <div class="songRow clearfix border-bottom py1"
                      ng-class='{playing: $index == Player.player.idx}'
                      ng-repeat="song in (orderedSongs = (songs | orderBy:sortType:sortReverse | filter:searchSong)) track by $index"
@@ -118,6 +117,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <find-similar></find-similar>
-</div>
+	<div class="col col-3 absolute right-0" set-class-at-top>
+	    <find-similar></find-similar>
+	    <nowplaying></nowplaying>
+	</div>
+   </div>

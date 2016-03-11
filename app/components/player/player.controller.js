@@ -33,7 +33,4 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeo
     $scope.toggleShuffle = function () {
         $scope.Player.shuffle = !$scope.Player.shuffle;
     };
-    function generateShuffleOrder () {
-
-    }
 });

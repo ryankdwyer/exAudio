@@ -7,7 +7,7 @@ const crashReporter = electron.crashReporter;
 const shell = require('shell');
 
 crashReporter.start({
-  productName: 'exAudo',
+  productName: 'exAudio',
   companyName: '',
   submitURL: 'http://localhost:3000/',
   autoSubmit: true
