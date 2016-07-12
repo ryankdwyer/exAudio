@@ -5,4 +5,4 @@ app.directive('nowplaying', function () {
     templateUrl: './app/components/nowPlaying/nowPlaying.html',
     controller: 'NowPlayingCtrl' 
   }
-})
+});

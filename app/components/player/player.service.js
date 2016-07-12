@@ -18,12 +18,12 @@
 //    })
 //  }
 //});
-app.factory('PlayerService', function (Storage, $rootScope) {
+app.factory('PlayerService', function (Storage, $rootScope, $timeout) {
   return {
     player: 'test',
     playing: false,
     shuffle: false,
-    shuffleOrder: [],
+    metadata: 'test',
     playSong: function (song, idx) {
       var self = this;
       if (self.player !== 'test') {
@@ -33,18 +33,23 @@ app.factory('PlayerService', function (Storage, $rootScope) {
         if (err) alert(`That file does not exist. \nPlease pick another song.`);
         self.player = AV.Player.fromBuffer(songBuffer);
         self.player.idx = idx;
+
         self.player.on('end', function () {
           if (self.shuffle === true) self.shufflePlay(self);
           else self.next(self);
         });
+
         self.player.on('progress', function (duration) {
           $rootScope.$emit('durationChange', duration);
         });
+
         self.player.on('ready', function () {
+          self.metadata = self.player.metadata;
           self.updateDuration(song, self.player);
-          $rootScope.$emit('songStarted', self.player);
           self.playing = true;
+          $rootScope.$emit('songStarted', self.player);
         });
+
         $rootScope.$on('keypress', function (event, keyCode) {
           if (self.playing) {
             self.pause(self.player);

@@ -58,7 +58,22 @@
         fs = require('fs'),
         loki = require('lokijs'),
         path = require('path'),
-        ipc = require('electron').ipcRenderer;
+        ipc = require('electron').ipcRenderer,
+        // Google Music testing
+        Playmusic = require('playmusic'),
+        pm = new Playmusic();
+    pm.init({email: "ryankdwyer@gmail.com", password: "Rd961602!"}, function(err) {
+        if(err) console.error(err);
+        console.log('success');
+        pm.getAllTracks(function(err, library) {
+            var song = library.data.items.pop();
+            console.log(song);
+            pm.getStreamUrl(song.id, function(err, streamUrl) {
+                console.log(streamUrl);
+            });
+        });
+    })
+
     </script>
 </body>
 

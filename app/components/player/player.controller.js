@@ -1,36 +1,36 @@
 app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeout) {
-    $scope.Player = PlayerService;
-    $scope.currentSong = 'test';
-    $scope.totalTime = null;
-    $scope.duration = 0;
-    var progressBar = $id('songDuration');
-    var volumeBar = $id('volume');
+  $scope.Player = PlayerService;
+  $scope.currentSong = 'test';
+  $scope.totalTime = null;
+  $scope.duration = 0;
+  var progressBar = $id('songDuration');
+  var volumeBar = $id('volume');
 
-    function $id(id) {
-        return document.getElementById(id);
-    }
+  function $id(id) {
+    return document.getElementById(id);
+  }
 
-    $rootScope.$on('songStarted', function (event, playerObj) {
-    	var song = (playerObj.asset.metadata.artist || playerObj.metadata.albumArtist) + ' - ' + (playerObj.asset.metadata.title || '') + ' - ' + (playerObj.format.formatID.toUpperCase() || '');
-        $scope.totalTime = playerObj.duration;
-    	$scope.currentSong = song;
-    });
+  $rootScope.$on('songStarted', function (event, playerObj) {
+    var song = (playerObj.asset.metadata.artist || playerObj.metadata.albumArtist) + ' - ' + (playerObj.asset.metadata.title || '') + ' - ' + (playerObj.format.formatID.toUpperCase() || '');
+    $scope.totalTime = playerObj.duration;
+    $scope.currentSong = song;
+  });
 
-    $rootScope.$on('durationChange', function (event, elapsed) {
-    	$scope.duration = elapsed;
-        progressBar.value = elapsed;
-        $scope.$apply();
-    });
+  $rootScope.$on('durationChange', function (event, elapsed) {
+    $scope.duration = elapsed;
+    progressBar.value = elapsed;
+    $scope.$apply();
+  });
 
-    $rootScope.$on('keypress', function (event, keyCode) {
-        $scope.$apply();
-    });
+  $rootScope.$on('keypress', function (event, keyCode) {
+    $scope.$apply();
+  });
 
-    $scope.changeVolume = function (value) {
-        $scope.Player.player.volume = value;
-    };
+  $scope.changeVolume = function (value) {
+    $scope.Player.player.volume = value;
+  };
 
-    $scope.toggleShuffle = function () {
-        $scope.Player.shuffle = !$scope.Player.shuffle;
-    };
+  $scope.toggleShuffle = function () {
+    $scope.Player.shuffle = !$scope.Player.shuffle;
+  };
 });

@@ -34,7 +34,6 @@ app.factory('Storage', function($rootScope) {
 			return new Promise(function(resolve, reject) {
 				if (self.loaded && self.db.getCollection('songs')) {
 					self.collection.insert(songs);
-					console.log(self);
 					self.db.saveDatabase();
 					resolve(self);
 				} else {
