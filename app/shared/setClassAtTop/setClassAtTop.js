@@ -3,7 +3,7 @@ app.directive('setClassAtTop', ($window, $document) => {
   return {
     restrict: 'A',
     link: function (scope, element, attrs) {
-      var topClass = "fixed top-0 left-0",
+      var topClass = "fixed top-0",
         hideElementClass = 'hide-element',
         offsetTop = 69;
       var header = angular.element(document.querySelector('#libraryHeader'));
@@ -13,12 +13,10 @@ app.directive('setClassAtTop', ($window, $document) => {
           spacer.removeClass(hideElementClass);
           element.removeClass('clearfix');
           element.addClass(topClass);
-          element.addClass('col col-9');
         } else {
           element.removeClass(topClass);
           element.addClass('clearfix');
           spacer.addClass(hideElementClass);
-          element.removeClass('col col-9');
         }
       });
     }

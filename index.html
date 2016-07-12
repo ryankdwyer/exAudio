@@ -26,6 +26,8 @@
     <script src="app/components/findSimilar/findSimilar.controller.js"></script>
     <script src="app/components/findSimilar/findSimilar.js"></script>
     <script src="app/components/echoNest/echoNest.factory.js"></script>
+    <script src="app/components/nowPlaying/nowPlaying.directive.js"></script>
+    <script src="app/components/nowPlaying/nowPlaying.controller.js"></script>
     <script src="node_modules/av/aurora.js"></script>
     <script src="node_modules/flac.js/build/flac.js"></script>
     <script src="node_modules/mp3.js/build/mp3.js"></script>
@@ -56,7 +58,22 @@
         fs = require('fs'),
         loki = require('lokijs'),
         path = require('path'),
-        ipc = require('electron').ipcRenderer;
+        ipc = require('electron').ipcRenderer,
+        // Google Music testing
+        Playmusic = require('playmusic'),
+        pm = new Playmusic();
+    pm.init({email: "ryankdwyer@gmail.com", password: "Rd961602!"}, function(err) {
+        if(err) console.error(err);
+        console.log('success');
+        pm.getAllTracks(function(err, library) {
+            var song = library.data.items.pop();
+            console.log(song);
+            pm.getStreamUrl(song.id, function(err, streamUrl) {
+                console.log(streamUrl);
+            });
+        });
+    })
+
     </script>
 </body>
 
