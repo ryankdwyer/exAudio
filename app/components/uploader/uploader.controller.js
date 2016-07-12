@@ -40,13 +40,29 @@ app.controller('UploaderCtrl', ($scope, Storage) => {
     }
 
     function parseFile(file) {
-        return new Promise(function(resolve, reject) {
-            mm(fs.createReadStream(file.path), function (err, metadata) {
+        var songData = {};
+        var songStream = fs.createReadStream(file.path);
+        var metaPromise = new Promise(function(resolve, reject) {
+            mm(songStream, function (err, metadata) {
                 if (err) reject(err);
                 metadata.path = file.path;
                 resolve(createMetadataObject(metadata));
             });
         })
+        return metaPromise.then(function(metaObject) {
+            songData = metaObject;
+            if (songData.duration) {
+                return songData;
+            } else {
+                return ID3.parse(file);
+            }
+        }).then(function(metaObject) {
+            if (songData.duration) {
+                return songData;
+            }
+            songData.duration = metaObject.length / 1000;        
+            return songData;
+        });
     }
 
     function createMetadataObject (songData) {
