@@ -5,6 +5,7 @@ const BrowserWindow = require('browser-window');
 const ipc = electron.ipcMain;
 const crashReporter = electron.crashReporter;
 const shell = require('shell');
+const spotifyAuth = require('./spotifyAuth.js');
 
 crashReporter.start({
   productName: 'exAudio',
@@ -20,6 +21,7 @@ crashReporter.getLastCrashReport();
 let mainWindow = null;
 let uploaderWindow = null;
 let findSimilarWindow = null;
+let authWindow = null;
 
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -56,6 +58,10 @@ function openUploader() {
   });
 }
 
+ipc.on('auth-spotify', function () {
+    spotifyAuth.initAuth(mainWindow);
+});
+
 ipc.on('open-add-songs', function() {
     openUploader();
 });
@@ -63,3 +69,7 @@ ipc.on('open-add-songs', function() {
 ipc.on('newSongsAdded', function (event, songs) {
   mainWindow.webContents.send('newSongsAdded', songs);
 });
+
+ipc.on('spotify-auth', function (event, authData) {
+    console.log('received the spotify auth data: ', authData);
+})
