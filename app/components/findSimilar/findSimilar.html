@@ -2,23 +2,29 @@
     <div class="col col-12 clearfix silver rounded px1" id="find-similar">
         <div class="col col-12 bg-lighten-2" id="find-similar-header">
             <div class="h4">
-                <div class="col col-9 px1">
+                <div class="col col-8 px1">
                     Artist
                 </div>
-                <div class="col col-3">
+                <div class="col col-2">
                     Link
+                </div>
+                <div class="col col-2">
+                    Preview
                 </div>
             </div>
         </div>
         <div class="col col-12 bg-lighten-2 px1">
             <div class="clearfix white border-bottom py1" ng-repeat="artist in similar">
-                <div class="col col-9 truncate silver">
+                <div class="col col-8 truncate silver">
                     {{artist.name}}
                 </div>
-                <div class="col col-3 px1 silver">
+                <div class="col col-2 silver">
                     <a href={{artist.links.what}} target="_blank"><i class="fa fa-bolt lime"></i></a>
                     <a href="{{artist.links.youTube}}" target="_blank"><i class="fa fa-youtube lime"></i></a>
                     <a href="{{artist.links.spotify}}" target="_blank"><i class="fa fa-spotify lime"></i></a>
+                </div> 
+                <div class="col col-2 silver">
+                    <audio-sample artist="artist"></audio-sample>
                 </div>
             </div>
         </div>

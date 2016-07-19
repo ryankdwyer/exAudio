@@ -1,22 +1,21 @@
 'use strict';
-app.controller('FindSimilarCtrl', function ($scope, echoNestFactory, PlayerService) {
+app.controller('FindSimilarCtrl', function ($scope, $rootScope, spotifyAPIFactory, PlayerService) {
   $scope.getSimilarArtists = () => {
     if (PlayerService.player !== 'test') {
       let songData = PlayerService.getMetadata(PlayerService.player);
-      echoNestFactory.getSimilarArtist(songData)
+      spotifyAPIFactory.getSimilarArtist(songData)
         .then(function (similarArtists) {
-          console.log(similarArtists.data.response);
-          similarArtists.data.response.artists.map(function(artist) {
-            artist.links = buildExternalLinks(artist.name, artist.foreign_ids[0].foreign_id);
+          similarArtists.tracks.map(function(track) {
+              console.log(track);
+            track.links = buildExternalLinks(track.artists[0].name, track.artists[0].id);
           });
-          $scope.similar = similarArtists.data.response.artists;
+          $scope.similar = similarArtists.tracks;
         })
     }
   };
 
-  let buildExternalLinks = (artistName, spotifyArtistId) => {
+  let buildExternalLinks = (artistName, spotifyId) => {
     let query = artistName.split(' ').join('+');
-    let spotifyId = spotifyArtistId.split(':')[2];
     let what = `https://what.cd/torrents.php?searchstr=${query}`;
     let youTube = `https://www.youtube.com/results?search_query=${query}`;
     let spotify = `https://open.spotify.com/artist/${spotifyId}`;
@@ -26,4 +25,8 @@ app.controller('FindSimilarCtrl', function ($scope, echoNestFactory, PlayerServi
       spotify: spotify
     }
   }
+
+  $rootScope.$on('songStarted', function(event, player) {
+    $scope.getSimilarArtists();
+  })
 });
