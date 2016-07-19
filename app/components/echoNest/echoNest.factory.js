@@ -5,9 +5,9 @@ app.factory('spotifyAPIFactory', ($http, Storage) => {
     factory.getSimilarArtist = function (songData) {
         let headers = factory.buildSpotifyHeaders();
         let method = 'GET';
-        return factory.getSpotifyId('artist', songData)
+        return factory.getSpotifyId('artist', songData.artist)
             .then(function(response) {
-                let url = `${factory.baseUrl}recommendations?seed_artists=${response.data.artists.items[0].id}`;
+                let url = `${factory.baseUrl}recommendations?seed_artists=${response.data.artists.items[0].id}&min_popularity=25&market=US`;
                 return factory.request(method, url, {}, headers);
             })
             .then(function(response) {

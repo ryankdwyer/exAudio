@@ -6,7 +6,6 @@ app.controller('FindSimilarCtrl', function ($scope, $rootScope, spotifyAPIFactor
       spotifyAPIFactory.getSimilarArtist(songData)
         .then(function (similarArtists) {
           similarArtists.tracks.map(function(track) {
-              console.log(track);
             track.links = buildExternalLinks(track.artists[0].name, track.artists[0].id);
           });
           $scope.similar = similarArtists.tracks;
