@@ -1,4 +1,5 @@
 app.controller('HeaderCtrl', ($scope, PlayerService, Storage, spotifyAPIFactory) => {
+    $scope.authed = false;
   $scope.openAddSongs = () => {
     ipc.send('open-add-songs');
   };
@@ -9,5 +10,6 @@ app.controller('HeaderCtrl', ($scope, PlayerService, Storage, spotifyAPIFactory)
 
   ipc.on('spotify-auth-tokens', function(event, data) {
     Storage.addCreds('spotify', data).then(function(data) {});
+    $scope.authed = true;
   })
 });

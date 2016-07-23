@@ -7,12 +7,23 @@ app.factory('spotifyAPIFactory', ($http, Storage) => {
         let method = 'GET';
         return factory.getSpotifyId('artist', songData.artist)
             .then(function(response) {
-                let url = `${factory.baseUrl}recommendations?seed_artists=${response.data.artists.items[0].id}&min_popularity=25&market=US`;
+                let url = `${factory.baseUrl}recommendations?seed_artists=${response.data.artists.items[0].id}&min_popularity=25&market=US&limit=12`;
                 return factory.request(method, url, {}, headers);
             })
             .then(function(response) {
                 return response.data;
             })
+    }
+    factory.getArtist = function (artist) {
+        let method = 'GET';
+        return factory.getSpotifyId('artist', artist)
+            .then(function(response) {
+                let url = `${factory.baseUrl}artists/${response.data.artists.items[0].id}`;
+                return factory.request(method, url, {}, {});
+            })
+            .then(function(response) {
+                return response.data;
+            });
     }
     factory.getSpotifyId = function (type, data) {
         let url = `${factory.baseUrl}search?q=${data}&type=${type}`;
@@ -26,6 +37,9 @@ app.factory('spotifyAPIFactory', ($http, Storage) => {
             if (creds) return creds[0];
         }
         return false;
+    }
+    factory.checkAuthCreds = function () {
+        return Date.now() < factory.getSpotifyAuth().expires;
     }
     factory.buildSpotifyHeaders = function() {
         let creds = factory.getSpotifyAuth();

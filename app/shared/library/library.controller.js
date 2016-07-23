@@ -34,6 +34,7 @@ app.controller('LibraryCtrl', ($scope, Storage, $rootScope, PlayerService, $time
     $rootScope.$on('dbLoaded', () => {
         $scope.$apply($scope.songs = Storage.collection.data);
         Storage.orderedSongs = $scope.orderedSongs;
+        console.log($scope.songs);
     });
     // convert to ipc
     $rootScope.$on('newSongsAdded', (event) => {

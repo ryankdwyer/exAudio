@@ -31,6 +31,7 @@ methods.initAuth = function (mainWindow) {
     authWindow.webContents.on('will-navigate', function (event, newUrl) {
         var hashResult = methods.parseHashFragment(parse(newUrl).hash);
         mainWindow.webContents.send('spotify-auth-tokens', hashResult);
+        setTimeout(function () {authWindow.close()}, 1500);
     });
 
     authWindow.on('closed', function() {

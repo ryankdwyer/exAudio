@@ -45,6 +45,7 @@ app.factory('PlayerService', function (Storage, $rootScope, $timeout) {
 
         self.player.on('ready', function () {
           self.metadata = self.player.metadata;
+          self.metadata.$loki = song.$loki;
           self.updateDuration(song, self.player);
           self.playing = true;
           $rootScope.$emit('songStarted', self.player);

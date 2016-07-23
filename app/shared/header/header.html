@@ -1,11 +1,23 @@
-<div class="flex flex-center mt2 mb1" id="header">
-    <loader></loader>
-    <button class="ml2 mr1 btn btn-outline mb1 lime" ng-click="openAddSongs()">
-        <span class="thin">Add Songs</span>
-    </button>
-    <button class="ml1 mr2 btn btn-outline mb1 lime" ng-click="spotifyAuth()">
-        <span class="thin">Login with Spotify</span>
-    </button>
+<div class="flex mt2 mb1" id="header">
+    <div> 
+        <loader></loader>
+    </div>
+    <div>
+        <button class="ml2 mr1 btn btn-outline mb1 lime" ng-click="openAddSongs()">
+            <span class="thin">Add Songs</span>
+        </button>
+    </div>
+    <div class="flex-auto">
+        <button class="ml1 mr2 btn btn-outline mb1 lime" 
+            ng-click="spotifyAuth()"
+            ng-hide="authed">
+            <span class="thin">Login with Spotify</span>
+        </button>
+        <div class="ml1 mr2 btn-outline mb1 lime"
+            ng-show="authed">
+            Logged in with <i class="fa fa-spotify"></i>
+        </div>
+    </div>
     <div>
         <search></search>
     </div>

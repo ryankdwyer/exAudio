@@ -1,4 +1,4 @@
-app.directive('audioSample', ($sce) => {
+app.directive('audioSample', ($sce, PlayerService) => {
     return {
         restrict: 'E',
         templateUrl: './app/components/audioSample/audioSample.html',
@@ -14,7 +14,7 @@ app.directive('audioSample', ($sce) => {
            })
            scope.playSongPreview = (url) => {
                var audioElement = document.getElementById(url);
-               console.log(audioElement);
+               PlayerService.pause(PlayerService.player);
                if (audioElement.paused) {
                     audioElement.play();
                     scope.playing = true;

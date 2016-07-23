@@ -3,7 +3,7 @@
         <div class="col col-12 bg-lighten-2" id="find-similar-header">
             <div class="h4">
                 <div class="col col-8 px1">
-                    Artist
+                    Artist-Song
                 </div>
                 <div class="col col-2">
                     Link
@@ -16,7 +16,7 @@
         <div class="col col-12 bg-lighten-2 px1">
             <div class="clearfix white border-bottom py1" ng-repeat="artist in similar">
                 <div class="col col-8 truncate silver">
-                    {{artist.name}}
+                    {{artist.artists[0].name}} - {{artist.name}} 
                 </div>
                 <div class="col col-2 silver">
                     <a href={{artist.links.what}} target="_blank"><i class="fa fa-bolt lime"></i></a>
@@ -28,7 +28,16 @@
                 </div>
             </div>
         </div>
-        <div class="col col-12 bg-lighten-2 center">
+        <div class="col col-12 bg-lighten-2 center" ng-hide="authorized">
+            <div class="p2 m2">
+                Please login in with Spotify to see recommendations
+            </div>
+            <button class="btn btn-outline lime mt1 mb1" 
+                ng-click="spotifyAuth()">
+                Login with Spotify
+            </button>
+        </div>
+        <div class="col col-12 bg-lighten-2 center" ng-show="authorized">
             <button class="btn btn-outline lime mt1 mb1" ng-click="getSimilarArtists(song)">Find Similar</button>
         </div>
     </div>

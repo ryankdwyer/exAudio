@@ -2,6 +2,10 @@
 app.controller('FindSimilarCtrl', function ($scope, $rootScope, spotifyAPIFactory, PlayerService) {
   $scope.getSimilarArtists = () => {
     if (PlayerService.player !== 'test') {
+      if (!spotifyAPIFactory.checkAuthCreds()) {
+          $scope.authorized = false;
+        return false;
+      }
       let songData = PlayerService.getMetadata(PlayerService.player);
       spotifyAPIFactory.getSimilarArtist(songData)
         .then(function (similarArtists) {
@@ -28,4 +32,16 @@ app.controller('FindSimilarCtrl', function ($scope, $rootScope, spotifyAPIFactor
   $rootScope.$on('songStarted', function(event, player) {
     $scope.getSimilarArtists();
   })
+  $scope.spotifyAuth = () => {
+      ipc.send('auth-spotify');
+  };
+
+  var validateSpotifyCreds = function () {
+    if (spotifyAPIFactory.checkAuthCreds()) {
+        $scope.authorized = true;
+    } else {
+        $scope.authorized = false;
+    }
+  }
+  validateSpotifyCreds();
 });
