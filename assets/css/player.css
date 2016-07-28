@@ -39,3 +39,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     padding-bottom: 3px;
     background-color: black;
 }
+
+#current-song {
+    text-decoration: none;
+}

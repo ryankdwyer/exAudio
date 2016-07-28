@@ -8,11 +8,12 @@ app.controller('FindSimilarCtrl', function ($scope, $rootScope, spotifyAPIFactor
       }
       let songData = PlayerService.getMetadata(PlayerService.player);
       spotifyAPIFactory.getSimilarArtist(songData)
-        .then(function (similarArtists) {
-          similarArtists.tracks.map(function(track) {
+        .then(function (similarSongs) {
+            similarSongs = sortSongs(similarSongs.tracks, 'popularity');
+          similarSongs.map(function(track) {
             track.links = buildExternalLinks(track.artists[0].name, track.artists[0].id);
           });
-          $scope.similar = similarArtists.tracks;
+          $scope.similar = similarSongs;
         })
     }
   };
@@ -29,6 +30,10 @@ app.controller('FindSimilarCtrl', function ($scope, $rootScope, spotifyAPIFactor
     }
   }
 
+  let sortSongs = (songs, parameter) => {
+    return _.sortBy(songs, parameter);
+  }
+
   $rootScope.$on('songStarted', function(event, player) {
     $scope.getSimilarArtists();
   })
@@ -36,7 +41,7 @@ app.controller('FindSimilarCtrl', function ($scope, $rootScope, spotifyAPIFactor
       ipc.send('auth-spotify');
   };
 
-  var validateSpotifyCreds = function () {
+  let validateSpotifyCreds = function () {
     if (spotifyAPIFactory.checkAuthCreds()) {
         $scope.authorized = true;
     } else {

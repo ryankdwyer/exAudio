@@ -34,7 +34,6 @@ app.controller('LibraryCtrl', ($scope, Storage, $rootScope, PlayerService, $time
     $rootScope.$on('dbLoaded', () => {
         $scope.$apply($scope.songs = Storage.collection.data);
         Storage.orderedSongs = $scope.orderedSongs;
-        console.log($scope.songs);
     });
     // convert to ipc
     $rootScope.$on('newSongsAdded', (event) => {
@@ -42,7 +41,6 @@ app.controller('LibraryCtrl', ($scope, Storage, $rootScope, PlayerService, $time
     });
 
     var matchLokiId = (lokiId) => {
-        //return _.findIndex(Storage.orderedSongs, {$loki: lokiId});
         for (var i = 0; i < Storage.orderedSongs.length; i++) {
             if (lokiId === Storage.orderedSongs[i].$loki) {
                 return i;
