@@ -1,69 +1,86 @@
+'use strict';
+
 app.factory('PlayerService', function (Storage, $rootScope, $timeout) {
-  return {
-    player: 'test',
-    playing: false,
-    shuffle: false,
-    metadata: 'test',
-    playSong: function (song, idx) {
-      var self = this;
-      if (self.player !== 'test') {
-        self.player.stop();
+    var player = {};
+    player.asset = '';
+    player.playing = false;
+    player.shuffle = false;
+    player.metadata = '';
+    player.playSong = playSong;
+    player.getPlayerStatus = getPlayerStatus;
+    player.play = play;
+    player.pause = pause;
+    player.stop = stop;
+    player.next = next;
+    player.previous = previous;
+    player.shufflePlay = shufflePlay;
+    player.getMetadata = getMetadata;
+
+    function playSong (song, idx) {
+      if (player.asset !== '') {
+        player.stop();
       }
       fs.readFile(song.path, function (err, songBuffer) {
         if (err) alert(`That file does not exist. \nPlease pick another song.`);
 
-        self.player = AV.Player.fromBuffer(songBuffer);
-        self.player.idx = idx;
+        player.asset = AV.Player.fromBuffer(songBuffer);
+        player.asset.idx = idx;
 
-        self.player.on('end', function () {
-          if (self.shuffle === true) self.shufflePlay(self);
-          else self.next(self);
+        player.asset.on('end', function () {
+          if (player.shuffle === true) player.shufflePlay();
+          else player.next();
         });
 
-        self.player.on('progress', function (duration) {
+        player.asset.on('progress', function (duration) {
           $rootScope.$emit('durationChange', duration);
         });
 
-        self.player.on('ready', function () {
-          self.metadata = self.player.metadata;
-          self.metadata.$loki = song.$loki;
-          self.updateDuration(song, self.player);
-          self.playing = true;
-          $rootScope.$emit('songStarted', self.player);
+        player.asset.on('ready', function () {
+          player.metadata = player.asset.metadata;
+          player.metadata.$loki = song.$loki;
+          player.playing = true;
+          $rootScope.$emit('songStarted', player.asset);
         });
 
         $rootScope.$on('keypress', function (event, keyCode) {
-          if (self.playing) {
-            self.pause(self.player);
+          if (player.playing) {
+            player.pause();
           } else {
-            self.play(self.player);
+            player.play();
           }
-          self.playing = !self.playing;
+          player.playing = !player.playing;
         });
-        self.player.play();
-      });
-    },
-    getPlayerStatus: (player) => player.playing,
-    play: (player) => {
-      if (player !== 'test') {
         player.play();
+      });
+    };
+
+    function getPlayerStatus() {
+        return player.playing;
+    };
+    
+    function play() {
+      if (player.asset !== '') {
+        player.asset.play();
       }
-    },
-    pause: (player) => {
-      if (player !== 'test') {
-        player.pause();
+    };
+
+    function pause() {
+      if (player.asset !== '') {
+        player.asset.pause();
       }
-    },
-    stop: (player) => {
-      if (player !== 'test') {
-        player.stop();
+    };
+
+    function stop() {
+      if (player.asset !== '') {
+        player.asset.stop();
       }
-    },
-    next: (player) => {
-      if (player.shuffle) player.shufflePlay(player);
+    };
+    
+    function next() {
+      if (player.shuffle) player.shufflePlay();
       else {
-        if (player.player !== 'test') {
-          var nextSongIdx = player.player.idx + 1;
+        if (player.asset !== '') {
+          var nextSongIdx = player.asset.idx + 1;
           if (nextSongIdx >= Storage.collection.data.length) return false;
           else {
             var nextSong = Storage.orderedSongs[nextSongIdx];
@@ -71,37 +88,33 @@ app.factory('PlayerService', function (Storage, $rootScope, $timeout) {
           }
         }
       }
-    },
-    previous: (player) => {
-      if (player.player !== 'test') {
-        var prevSongIdx = player.player.idx - 1;
+    };
+    
+    function previous() {
+      if (player.asset !== '') {
+        var prevSongIdx = player.asset.idx - 1;
         if (prevSongIdx < 0) return false;
         else {
           var nextSong = Storage.orderedSongs[prevSongIdx];
           player.playSong(nextSong, prevSongIdx);
         }
       }
-    },
-    updateDuration: (song, player) => {
-      if (song.duration !== 0) return false;
-      song.duration = player.duration / 1000;
-      Storage.collection.update(song);
-      Storage.db.saveDatabase();
-    },
-    shufflePlay: (player) => {
-      if (player.player !== 'test') {
-        var max = Storage.collection.data.length - 1;
-        var nextSongIdx = Math.floor(Math.random() * (max + 1));
-        var nextSong = Storage.orderedSongs[nextSongIdx];
-        player.playSong(nextSong, nextSongIdx);
-      }
-    },
-    getMetadata: (player) => {
-      if(player.player !== 'test') {
-        return player.metadata;
-      }
-    }
-  }
+    };
 
+   function shufflePlay() {
+     if (player.asset !== '') {
+       var max = Storage.collection.data.length - 1;
+       var nextSongIdx = Math.floor(Math.random() * (max + 1));
+       var nextSong = Storage.orderedSongs[nextSongIdx];
+       player.playSong(nextSong, nextSongIdx);
+     }
+   };
 
+   function getMetadata() {
+     if(player.asset !== '') {
+       return player.asset.metadata;
+     }
+   };
+
+   return player;
 });
