@@ -14,6 +14,7 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeo
     var song = (playerObj.asset.metadata.artist || playerObj.metadata.albumArtist) + ' - ' + (playerObj.asset.metadata.title || '') + ' - ' + (playerObj.format.formatID.toUpperCase() || '');
     $scope.totalTime = playerObj.duration;
     $scope.currentSong = song;
+    $scope.currentLokiId = playerObj.asset.metadata.$loki;
   });
 
   $rootScope.$on('durationChange', function (event, elapsed) {

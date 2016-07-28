@@ -10,7 +10,9 @@
             <i class="fa fa-forward fa-lg" ng-click="Player.next(Player)"></i>
         </div>
         <div class="col col-3 left truncate mb1 white">
-            <span ng-if="currentSong !== 'test'">{{currentSong}}</span>
+            <span ng-if="currentSong !== 'test'">
+                <a class="white" id="current-song" href="#{{currentLokiId}}">{{currentSong}}</a>
+            </span>
             <span ng-if="currentSong == 'test'">Play a song!</span>
         </div>
         <div class="col col-1 center mb1 white">

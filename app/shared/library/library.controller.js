@@ -41,7 +41,6 @@ app.controller('LibraryCtrl', ($scope, Storage, $rootScope, PlayerService, $time
     });
 
     var matchLokiId = (lokiId) => {
-        //return _.findIndex(Storage.orderedSongs, {$loki: lokiId});
         for (var i = 0; i < Storage.orderedSongs.length; i++) {
             if (lokiId === Storage.orderedSongs[i].$loki) {
                 return i;

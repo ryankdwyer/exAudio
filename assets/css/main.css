@@ -14,5 +14,14 @@ html {
     font-size: 14px;
 }
 
-#find-similar {
+input[type="text"] {
+    background-color: #2e2e2e;
+}
+
+input {
+    color: silver;
+}
+
+#now-playing {
+    min-height: calc(~"100vh - 150px");
 }

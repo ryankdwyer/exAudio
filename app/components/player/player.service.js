@@ -1,23 +1,3 @@
-//app.service('PlayerService', function (Storage, $rootScope) {
-//  this.player = 'test';
-//  this.player = false;
-//  this.shuffle = false;
-//  this.shuffleOrder = [];
-//  this.playSong = (song, idx) => {
-//    let self = this;
-//    if (self.player !== 'test') {
-//      self.player.stop();
-//    }
-//    fs.readFile(song.path, function (err, songBuffer) {
-//      if(err) alert(`That file does not exist. Please pick another song.`);
-//      self.player = AV.Player.fromBuffer(songBuffer);
-//      self.player.idx = idx;
-//      self.player.on('end', function () {
-//        if(self.shuffle === true) self.shufflePlay(self);
-//      })
-//    })
-//  }
-//});
 app.factory('PlayerService', function (Storage, $rootScope, $timeout) {
   return {
     player: 'test',
@@ -31,6 +11,7 @@ app.factory('PlayerService', function (Storage, $rootScope, $timeout) {
       }
       fs.readFile(song.path, function (err, songBuffer) {
         if (err) alert(`That file does not exist. \nPlease pick another song.`);
+
         self.player = AV.Player.fromBuffer(songBuffer);
         self.player.idx = idx;
 
@@ -45,6 +26,7 @@ app.factory('PlayerService', function (Storage, $rootScope, $timeout) {
 
         self.player.on('ready', function () {
           self.metadata = self.player.metadata;
+          self.metadata.$loki = song.$loki;
           self.updateDuration(song, self.player);
           self.playing = true;
           $rootScope.$emit('songStarted', self.player);
