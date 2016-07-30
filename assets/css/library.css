@@ -11,3 +11,10 @@
 #library{
     bottom: 55px;
 }
+
+#library-body {
+    height: 100%;
+    position: relative;
+    float: left;
+    overflow: auto;
+}

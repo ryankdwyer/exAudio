@@ -1,5 +1,6 @@
 'use strict';
 app.controller('FindSimilarCtrl', function ($scope, $rootScope, spotifyAPIFactory, PlayerService) {
+  $scope.authorized = false;
   $scope.getSimilarArtists = () => {
     if (PlayerService.player !== 'test') {
       if (!spotifyAPIFactory.checkAuthCreds()) {

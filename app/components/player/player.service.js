@@ -15,6 +15,7 @@ app.factory('PlayerService', function (Storage, $rootScope, $timeout) {
     player.previous = previous;
     player.shufflePlay = shufflePlay;
     player.getMetadata = getMetadata;
+    player.seekTo = seekTo;
 
     function playSong (song, idx) {
       if (player.asset !== '') {
@@ -115,6 +116,12 @@ app.factory('PlayerService', function (Storage, $rootScope, $timeout) {
        return player.asset.metadata;
      }
    };
+
+   function seekTo(seekTime) {
+    if(player.asset !== '') {
+      player.asset.device.seek(seekTime);
+    }
+   }
 
    return player;
 });

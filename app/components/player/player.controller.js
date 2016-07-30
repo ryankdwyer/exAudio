@@ -3,6 +3,7 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeo
   $scope.currentSong = 'test';
   $scope.totalTime = null;
   $scope.duration = 0;
+  $scope.seekTime = 0; 
   var progressBar = $id('songDuration');
   var volumeBar = $id('volume');
 
@@ -34,4 +35,8 @@ app.controller('PlayerCtrl', function ($scope, PlayerService, $rootScope, $timeo
   $scope.toggleShuffle = function () {
     $scope.Player.shuffle = !$scope.Player.shuffle;
   };
+
+  //$scope.seekTo = function () {
+  //  $scope.Player.seekTo($scope.seekTime/1000);
+  //};
 });
