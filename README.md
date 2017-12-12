@@ -12,7 +12,6 @@ This is a work in progress, so expect a few bugs, and if you find one, let me kn
 3. aac 
 4. mp3
 5. mp4
-6. more are coming!
 
 ##Technologies/Libraries used:
 1. Electron
